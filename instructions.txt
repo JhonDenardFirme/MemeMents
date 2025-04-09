@@ -1,0 +1,111 @@
+GitHub Workflow for Collaborative Project
+
+1. Cloning the Repository
+
+- Clone the repository to your local machine:
+  git clone https://github.com/your-org/quiz-app.git
+- Navigate to the project directory:
+  cd quiz-app
+
+2. Select Your Branch
+
+Each team member works on their respective branch:
+- For Abbedja (homepage): 
+  git checkout abj-homepage
+- For Julian (homepage): 
+  git checkout jln-homepage
+- For Mikaela (quiz section): 
+  git checkout mkl-quiz
+- For Denard (quiz section): 
+  git checkout drd-quiz
+
+3. Sync Your Branch with main (Always Get the Latest Code)
+
+Before starting work, always ensure your branch is up to date with main:
+
+- Fetch the latest changes from GitHub:
+  git fetch origin
+- Merge main into your branch:
+  git merge origin/main
+
+Resolve any conflicts if prompted.
+
+4. Add, Commit, and Push Changes
+
+As you make changes, follow these steps regularly:
+
+Stage Changes:
+- Add all modified files:
+  git add .
+
+Commit Changes:
+- Commit your changes with a descriptive message:
+  git commit -m "Describe your changes here"
+
+Push Changes:
+- Push the changes to your remote branch:
+  git push origin <your-branch-name>
+
+Repeat these steps regularly as you work.
+
+5. Create a Pull Request (PR) to main
+
+Once you have significant changes, it's time to merge your branch into main:
+
+- Push your branch to GitHub if you haven’t already:
+  git push origin <your-branch-name>
+
+- Go to GitHub and create a Pull Request to merge your branch into main:
+  - Click the Compare & Pull Request button.
+  - Provide a clear title and description for your changes.
+  - Add any reviewers if necessary.
+  - Click Create Pull Request.
+
+6. Review and Merge Pull Request
+
+Once your PR is created:
+- A team member (or project lead) will review the changes.
+- Once approved, they will click Merge Pull Request to merge your changes into main.
+- Optionally, delete the feature branch after merging to keep the repo clean.
+
+7. Pull Latest Changes from main
+
+Always keep your branch up-to-date with changes from main:
+
+- Switch to your branch if you're not already on it:
+  git checkout <your-branch-name>
+
+- Pull the latest updates from main:
+  git pull origin main
+
+Summary of Commands
+
+Cloning the Repository:
+git clone https://github.com/your-org/quiz-app.git
+cd quiz-app
+
+Switching to Your Branch:
+git checkout <your-branch-name>  # e.g., git checkout abj-homepage
+
+Syncing Your Branch with main:
+git fetch origin
+git merge origin/main
+
+Committing and Pushing Changes:
+git add .
+git commit -m "Your commit message"
+git push origin <your-branch-name>
+
+Creating a Pull Request:
+- Push your branch to GitHub.
+- Go to GitHub, create a Pull Request to main.
+
+Pulling Latest Changes:
+git checkout <your-branch-name>
+git pull origin main
+
+Best Practices
+- Commit Often: Commit your changes regularly to avoid large commits.
+- Write Clear Commit Messages: Descriptive messages make it easier to understand the history.
+- Sync Regularly: Frequently pull the latest changes from main to avoid conflicts.
+- Review PRs: Always review Pull Requests before merging to ensure quality and consistency.
