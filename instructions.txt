@@ -1,0 +1,5 @@
+GUIDELINES FOR GITHUB
+
+main - finalized codes
+
+Each section has their branch. You will work there, push changes regularly, and create Pull Requests when there's significant changes
