@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
       
     // Test for changing Meme Image and Progress Bar based on Current Index
-    var currentIndex = 2;
+    var currentIndex = 1;
     memeImage.src = `../../images/quiz-assets/meme-img-easy/${currentIndex.toString()}.jpg`
 
     var progressBar = document.querySelector("#progress-bar");
@@ -56,6 +56,5 @@ document.addEventListener("DOMContentLoaded", () => {
     let percentage = (currentIndex / totalQuestions) * 100;
     progressBar.style.width = `${percentage}%`;
     progressValue.textContent = `${Math.round(percentage)}%`;
-
 
 });
