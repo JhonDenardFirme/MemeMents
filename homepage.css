@@ -58,7 +58,13 @@ h2, h2 span{
     font-weight: 900;
     margin-bottom: -16px;
 }
-
+.text-blue-gradient {
+    background: linear-gradient(0deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
 h3{
     font-size: 32px;
     font-family: 'Gilroy-Bold', 'Arial', sans-serif;
