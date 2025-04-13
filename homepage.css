@@ -41,11 +41,10 @@ a{
     color: var(--black);
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
-
-
 
 h1, h1 span{
     font-size: 128px;
@@ -90,10 +89,39 @@ p{
     justify-content: center;
 }
 
+/*FOR SCROLL*/
+.full-cont, .about {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+  }
 
+  .container {
+    height: 100%;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  .navbar {
+    z-index: 1000;
+    /* Keep your existing navbar styles */
+  }
+  @media (max-width: 768px) {
+    html, body {
+      scroll-snap-type: none;
+    }
+    
+    .full-cont, .about {
+      height: auto;
+      min-height: 100vh;
+    }
+  }
 /* HOMEPAGE */
 .navbar{
+    position: fixed;
     display: flex;
     background: linear-gradient(to right, #12358A, #050E24);
     width: 900px;
@@ -105,7 +133,7 @@ p{
     padding: 0;
     margin: 0;
     border-radius: 10px;
-    margin-top: 35px;
+    margin-top: 20px;
 
 
 }
@@ -129,21 +157,21 @@ ul li{
     padding: 0;
     justify-content: center;
 }
-
-.home{
+.full-cont{
     position: inherit;
     margin: 0;
     padding: 0;
     min-height: 80vh;
     width: 100%;
-    background: url('homepage-bg.png');
-    display: flex;
-    align-items: center; 
+    background: url('image/homepage-bg.png');
     z-index: -1;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-top: 20px;
+}
+.home{
+    display: flex;
+    align-items: center; 
 }
 .home-context{
     display: grid;
@@ -280,7 +308,7 @@ ul li{
     margin: 0;
     text-align: center;
     position: relative; 
-    height: 750px; 
+    height: 780px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -291,7 +319,10 @@ ul li{
     z-index: 1; 
     width: 100%;
 }
-
+.header h1{
+    margin:0;
+    font-size: 5rem;
+}
 
 /*image scroller*/
 .image-scroller {
@@ -302,7 +333,7 @@ ul li{
     top: 0;
     left: 0;
     width: 100%; 
-    height: 100%; 
+    height: 95%; 
     z-index: -1; 
     opacity: 0.2; 
     filter: blur(5px);
@@ -409,7 +440,7 @@ ul li{
 }
 
 .about-container{
-    margin-top: 1rem;
+    margin-top: 0.2rem;
 }
 .about-container h3{
     font-size: 50px;
@@ -417,8 +448,8 @@ ul li{
 .about-container p{
     font-size: 20px;
     text-align: justify;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
     padding: 20px;
 }
 
@@ -426,6 +457,8 @@ ul li{
     background-color: white;
     padding: 20px;
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
 }
 
 .about1 h3{
