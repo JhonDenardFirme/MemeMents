@@ -32,29 +32,85 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Option A clicked:" + currentAnswer);
     });
       
-      optBButton.addEventListener("click", () => {
+    optBButton.addEventListener("click", () => {
         alert("Option B clicked:" + currentAnswer);
     });
       
-      optCButton.addEventListener("click", () => {
+    optCButton.addEventListener("click", () => {
         alert("Option C clicked:" + currentAnswer);
     });
       
-      optDButton.addEventListener("click", () => {
+    optDButton.addEventListener("click", () => {
         alert("Option D clicked:" + currentAnswer);
     });
       
     // Test for changing Meme Image and Progress Bar based on Current Index
-    var currentIndex = 1;
+    var currentIndex = 0;
     memeImage.src = `../../images/quiz-assets/meme-img-easy/${currentIndex.toString()}.jpg`
 
-    var progressBar = document.querySelector("#progress-bar");
-    var progressValue = document.querySelector("#progress-value");
 
-    const totalQuestions = 5;
-    
-    let percentage = (currentIndex / totalQuestions) * 100;
-    progressBar.style.width = `${percentage}%`;
-    progressValue.textContent = `${Math.round(percentage)}%`;
+    // Test for Modal/ Checking Overlay
+
+
+
+    var checkingModal = document.querySelector("#checking-modal");
+    var nextButton = document.querySelector("#next-button");
+
+    var checkingIcon = document.querySelector("#checking-icon");        // Yung icon. Can only be Check or Cross depending on answer
+    var checkingTagline = document.querySelector("#checking-tagline");  // Yung malaki
+    var checkingTrivia = document.querySelector("#checking-trivia");    // Yung text description
+
+    checkingIcon.src = "../../images/icons/cross.png"
+    checkingTagline.textContent = "Galing naman ni Idol";
+    checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";
+
+
+    // Show the modal after clicking an option
+    optAButton.addEventListener("click", () => {
+      checkingModal.classList.add("active");
+      checkingIcon.src = "../../images/icons/check.png"
+      checkingTagline.textContent = "Galing naman ni Idol";
+      checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";  
+    });
+
+    optBButton.addEventListener("click", () => {
+      checkingModal.classList.add("active");
+      checkingIcon.src = "../../images/icons/cross.png"
+      checkingTagline.textContent = "Ayusin mo Teh"; 
+      checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";  
+    });
+
+
+    // Remove modal and update contents after clicking next
+    nextButton.addEventListener("click", () => {
+      currentIndex++;
+      //score
+      checkingModal.classList.remove("active");
+
+
+      // Progress Bar will automatically be updated based on current index
+      var progressBar = document.querySelector("#progress-bar");
+      var progressValue = document.querySelector("#progress-value");
+      const totalQuestions = 5;
+      let percentage = (currentIndex / totalQuestions) * 100;
+      progressBar.style.width = `${percentage}%`;
+      progressValue.textContent = `${Math.round(percentage)}%`;
+
+
+      // Kulang pa ng logic para patigil if question number 5 na
+    });
+
+    /*
+      Bali ikaw na bahala dito Irron hahahaha
+      Naka if else kung correct answer yung checking Icon
+      Then, perquestion may sariling checkingTagline and checkingTrivia, bali connected siya doon sa currentIndex 
+      And then maaactivate lang tong layer na to once may naclick na button. Magdadagdag ng class na "active"
+      And then pagclick ng nextButton, tatanggalin yung class "active", then increment currentIndex, and update ng score value if correct or not
+      Bali parang guide lang to para di mo sisimulan from scratch yung code. Goodluckk hahahaha.
+      Sa susunod magpupush pa ako ng changes for mobile version and animations. Makipagcoordinate na lang ako sayo sa next days since connected yung animations dito sa JS
+      And then ikaw na rin bahala dun sa ipaplay na Voice Over, iloloop na lang yun then naka hide yung player
+      */ 
+
+
 
 });
