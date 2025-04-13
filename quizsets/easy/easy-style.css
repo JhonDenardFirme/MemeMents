@@ -330,3 +330,84 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+
+
+
+
+.checking-modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+.checking-modal.active{
+    opacity: 1;
+    pointer-events: auto;
+
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.checking-container{
+    width: 80%;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.checking-icon{
+    width: 150px;
+    object-fit: cover;
+}
+
+.checking-tagline{
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: var(--white);
+    font-size: 64px;
+    text-align: center;
+}
+
+.checking-trivia{
+    color: var(--white);
+    font-size: 22px;
+    margin-top: 16px;
+    margin-bottom: 64px;
+    text-align: center;
+}
+
+.next-button{
+    padding: 12px 32px;
+    border-radius: 16px;
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: var(--white);
+    font-size: 22px;
+}
+
+.next-button:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
