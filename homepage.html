@@ -18,6 +18,20 @@
 
     <div class="parent">
             <nav class="navbar container">
+
+              <div class="burger" id="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+
+              <ul class="navLinks">
+                <a href="#home"><li>Home</li></a>
+                <a href="#about"><li>Statistics</li></a>
+                <a href="#testimonials"><li>Testimonials</li></a>
+                <a href="#about"><li>About</li></a>
+              </ul>
+              
                 <ul>
                     <a href="#home"><li>Home</li></a>
                     <a href="#about"><li>Statistics</li></a>
@@ -439,6 +453,17 @@
           
           updateActiveNav('home');
         });
+
+        
       </script>
+      <script>
+        const burger = document.getElementById("burger");
+        const navLinks = document.querySelector(".navbar ul");
+      
+        burger.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      </script>
+      
 </body>
 </html>
