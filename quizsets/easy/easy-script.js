@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
     // Test for changing Meme Image and Progress Bar based on Current Index
     var currentIndex = 0;
-    memeImage.src = `../../images/quiz-assets/meme-img-easy/${currentIndex.toString()}.jpg`
+    memeImage.src = `../../images/quiz-assets/meme-img-easy/${(currentIndex+1).toString()}.jpg`
 
 
     // Test for Modal/ Checking Overlay
