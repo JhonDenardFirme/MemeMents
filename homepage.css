@@ -121,7 +121,6 @@ p {
 
 .navbar {
   z-index: 1000;
-  /* Keep your existing navbar styles */
 }
 @media (max-width: 768px) {
   html,
@@ -618,12 +617,12 @@ ul li {
 }
 
 .testimonials {
-  position: inherit;
+  position: relative;
   margin: 0;
   padding: 0;
   min-height: 80vh;
   width: 100%;
-  background: url("image/homepage-bg.png");
+  background: url("./image/homepage-bg.png");
   z-index: -1;
   background-position: center;
   background-size: cover;
@@ -861,9 +860,9 @@ ul li {
     }
   }
   
-/*------ MEDIA QUERY FOR 400px */
+/*------ MEDIA QUERY FOR 400px ----- */
 
-@media (max-width: 400px) {
+@media (min-width: 380px) {
   h1,
   h1 span {
     font-size: 128px;
@@ -1479,7 +1478,7 @@ ul li {
     }
     header .logo {
       order: 0;
-      margin-right: 1rem; /* space between logo and the rest */
+      margin-right: 1rem; 
     }
 
     /* Navigation (if applicable) */
@@ -1632,4 +1631,50 @@ ul li {
       text-decoration-color: var(--primary-orange);
     }
   }
+}
+
+/*------BEDJ MEDIA QUERIES-------*/
+@media screen and (max-width: 768px) {
+
+  h1, h1 span{
+    font-size: 128px;
+    font-family: 'Rubik', 'Arial', sans-serif;
+    font-weight: 900;
+}
+
+h2, h2 span{
+    font-size: 64px;
+    font-family: 'Rubik', 'Arial', sans-serif;
+    font-weight: 900;
+    margin-bottom: -8px;
+}
+
+h3{
+    font-size: 28px;
+    font-family: 'Gilroy-Bold', 'Arial', sans-serif;
+    color: var(--black);
+    font-weight: 400;
+}
+
+h4, h4 span {
+    font-size: 22px;
+    font-family: 'Rubik', 'Arial', sans-serif;
+    color: white;
+    font-weight: 900;
+    margin-bottom: -8px;
+}
+
+p{
+    font-size: 14px;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: var(--black);
+    font-weight: 300;
+}
+
+.container {
+    padding: 32px;
+}
+
+/*Navigation*/
+
 }
