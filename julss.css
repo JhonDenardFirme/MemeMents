@@ -11,19 +11,7 @@
 .testimonials {
   position: relative;
   z-index: 0;
-  background-image: radial-gradient(
-      circle at 50% 20%,
-      rgba(255, 255, 255, 0.2) 0%,
-      /* soft flat white center */ rgba(255, 255, 255, 0.2) 2%,
-      /* expanded slightly */ rgba(0, 0, 0, 0.25) 10%,
-      /* shadow starts right after */ transparent 70% /* fade to background */
-    ),
-    url("Images/Testimonials/grid3.png");
 
-  background-repeat: no-repeat;
-  background-position: center center, center 85px;
-  background-size: cover, 40% 250px;
-  background-blend-mode: normal, normal;
 }
 .testimonials-grid {
   display: flex;

@@ -176,7 +176,7 @@ ul li {
   padding: 0;
   min-height: 80vh;
   width: 100%;
-  background: url("image/homepage-bg.png");
+  background: url("./image/homepage-bg.png");
   z-index: -1;
   background-position: center;
   background-size: cover;
@@ -623,12 +623,13 @@ ul li {
   padding: 0;
   min-height: 80vh;
   width: 100%;
-  background: url("image/homepage-bg.png");
-  z-index: -1;
+  background: url("./image/homepage-bg.png");
+  z-index: 1;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   }
+
   .testimonials-grid {
     display: flex;
     justify-content: center; /* center the whole row */
