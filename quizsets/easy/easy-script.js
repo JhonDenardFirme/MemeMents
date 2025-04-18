@@ -113,4 +113,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+    optAButton.classList.add("slideRightA");
+    optBButton.classList.add("slideRightB");
+    optCButton.classList.add("slideRightC");
+    optDButton.classList.add("slideRightD");
+
+    
+
+
+
+    var memeImageContainer = document.querySelector(".meme-image-section");
+    memeImageContainer.classList.add("slidetopMemeImageContainer")
+
+    var questionIcon = document.querySelector(".question-img");
+    var questionText = document.querySelector(".question-text");
+
+    questionIcon.classList.add('iconPopup');
+    questionText.classList.add('questionFadeIn');
+
+
+    var timerBar = document.querySelector('#timer-bar');
+    timerBar.classList.add('shrinkTimer');
+
+
+    /*
+
+      INITIALIZATION OF ELEMENTS
+
+      ALl opacity to 0
+      Change content to Index
+        - Question Text
+        - Options
+        - Image
+      Add Animations
+        - Question Icon
+        - Question Text
+        - Image
+        - Options
+        - Timer
+
+
+      Click
+        - Save Answer (Option Text Content to an Array)
+        - Save Answer Status (Correct or Wrong)
+        - Update Score (Add 100 if Correct)
+        - Display the Modal
+
+      Timer Runs Out
+        - Save Answer (None or Timer Ran Out text)
+        - Save Answer Status (Automatically Wrong)
+        - No Update Score
+        - Display the Modal
+
+
+      Displaying the Modal
+        - Change content according to index
+          - Tagline
+          - Description
+
+        - Change Icon according to status
+          - Correct
+          - Wrong
+
+        - Apply Animations
+          - Icon
+          - Tagline
+          - Text
+
+      Click Next Button
+        - Change content to Index
+
+    */
+
+
+
 });
