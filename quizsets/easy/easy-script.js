@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Test for Modal/ Checking Overlay
 
 
-
     var checkingModal = document.querySelector("#checking-modal");
     var nextButton = document.querySelector("#next-button");
 

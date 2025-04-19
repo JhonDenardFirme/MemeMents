@@ -59,7 +59,7 @@ body {
     gap: 16px;
 }
 
-.score-section, .reset-section{
+.score-section, .reset-section, .pause-section{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,6 +71,13 @@ body {
     padding: 4px 24px;
 }
 
+.pause-section:hover{
+    transform: scale(1.1);
+    transform-origin: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
 .reset-section:hover{
     transform: scale(1.1);
     transform-origin: center;
@@ -78,11 +85,11 @@ body {
     cursor: pointer;
 }
 
-.star-img, .reset-img{
+.star-img, .reset-img, .pause-img{
     height: 32px;
 }
 
-.score-text, .reset-text{
+.score-text, .reset-text, .pause-text{
     font-family: "Rubik";
     font-weight: 900;
     font-size: 18px;
@@ -119,12 +126,6 @@ body {
 
     opacity: 0;
 }
-
-
-
-
-
-
 
 .timer-container{
     position: absolute;
@@ -342,10 +343,6 @@ body {
     object-fit: cover;
 }
 
-
-
-
-
 .checking-modal {
     opacity: 0;
     pointer-events: none;
@@ -479,7 +476,7 @@ body {
     gap: 16px;
 }
 
-.reset-section, .quit-section{
+.reset-section, .quit-section, .pause-section{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -498,11 +495,11 @@ body {
     cursor: pointer;
 }
 
-.reset-img, .exit-img{
+.reset-img, .exit-img, .pause-img{
     height: 32px;
 }
 
-.score-text, .reset-text{
+.score-text, .reset-text, .pause-text{
     font-family: "Rubik";
     font-weight: 900;
     font-size: 18px;
@@ -738,11 +735,6 @@ body {
 }
 
 
-
-
-
-
-
 .meme-image-section-eval{
     position: absolute;
     right: -5%;
@@ -775,16 +767,6 @@ body {
     object-fit: cover;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* ----- ANIMATIONS SECTION ----- */
 
 @keyframes slideRight {
@@ -816,10 +798,6 @@ body {
     animation: slideRight 1s ease 1.4s forwards;
 }
 
-
-
-
-
 @keyframes slidetopRight {
     0% { 
         opacity: 0;
@@ -842,9 +820,6 @@ body {
 .slidetopMemeImage{
     animation: slidetopRight 1s ease 1s forwards;
 }
-
-
-
 
 
 @keyframes popUp {
@@ -902,22 +877,6 @@ body {
     animation: popUp2 1s ease 0s forwards;
     transform-origin: center;
 }
-
-
-
-@keyframes shrinkTimer {
-    0% {
-      width: 100%;
-    }
-    100% {
-      width: 0%;
-    }
-}
-
-.shrinkTimer{
-    animation: shrinkTimer 20s linear 0s forwards;
-}
-
 
 .iconPopup3{
     animation: popUp2 1s ease 0s forwards;
