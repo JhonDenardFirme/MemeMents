@@ -10,71 +10,71 @@ let timerInterval = null;
 let remainingTime = 100;
 
 const quizData = [
-  {
-      question: "Who is the girl featured in the \"Okay na toh.\" meme?",
-      options: {
-          a: "Dani Barretto",
-          b: "Jessica Villarubin",
-          c: "Angelica Panganiban",
-          d: "Grace Tanfelix"
-      },
-      correctAnswer: "d",
-      correctFeedback: "Tumpak!",
-      incorrectFeedback: "Ayusin mo pagpili teh!",
-      trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
-  },
-  {
-      question: "What iconic line did Neneng B say in her viral video?",
-      options: {
-          a: "Ma, gutom na ako.",
-          b: "Ma, anong oras na?",
-          c: "Ma, ano ulam?",
-          d: "Ma, may jowa na ako."
-      },
-      correctAnswer: "c",
-      correctFeedback: "Tama! Gutom speaks louder than words!",
-      incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
-      trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
-  },
-  {
-      question: "Which nickname is often associated with Malupiton?",
-      options: {
-          a: "Sir",
-          b: "Boss/Bossing",
-          c: "Love/Mahal",
-          d: "Kuya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
-      incorrectFeedback: "Ano? Kaya pa ba?",
-      trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
-  },
-  {
-      question: "In a statement made by …, Tama? Tayo ay nasa __________.",
-      options: {
-          a: "Fast food chain",
-          b: "Fine dining restaurant",
-          c: "Five star hotel",
-          d: "Karindirya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Sobrang sosyalin ang peg!",
-      incorrectFeedback: "Nye, anyare? Di bagay!",
-      trivia: "This meme was from Toni Fowler's reality show."
-  },
-  {
-      question: "What is the name of Toni Fowler's daughter?",
-      options: {
-          a: "Trisha",
-          b: "Tyronia",
-          c: "Tanya",
-          d: "Trixie"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
-      incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
-      trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
-  }
+    {
+        question: "What color is the polo shirt worn by the person in the 'Nagkaon ka na lab?' meme?",
+        options: {
+            a: "Blue Polo",
+            b: "Green Jacket",
+            c: "Pink Polo",
+            d: "Yellow Hat"
+        },
+        correctAnswer: "c",
+        correctFeedback: "Ang hot mo in hot pink!",
+        incorrectFeedback: "Ayusin mo pagpili teh! Baka ibang meme 'yan!",
+        trivia: "In the viral \"Nagkaon ka na lab?\" clip, the guy in the bold pink polo was talking to his GF while his friends teased him, making it a hilarious meme moment."
+    },
+    {
+        question: "What is Arman known for always doing in his viral videos?",
+        options: {
+            a: "Dancing joyfully",
+            b: "Screaming at everyone angrily",
+            c: "Cooking with passion",
+            d: "Singing loudly"
+        },
+        correctAnswer: "b",
+        correctFeedback: "Telenovela realness!",
+        incorrectFeedback: "Susmaryosep! Arman? Dito ka pa talaga nanghula!",
+        trivia: "Arman's iconic angry outbursts became a signature move in his viral videos, which makes it very funny."
+    },
+    {
+        question: "Arman Salon, owns what?",
+        options: {
+            a: "Restaurant",
+            b: "Hotel",
+            c: "School",
+            d: "Salon"
+        },
+        correctAnswer: "d",
+        correctFeedback: "Tumpak! Pwede ba ako magparebond diyan?!",
+        incorrectFeedback: "Nye, anyare bes?",
+        trivia: "Arman, runs his own salon, and it's where all his funny videos were made."
+    },
+    {
+        question: "Where does Neneng B sells hotdog sandwiches?",
+        options: {
+            a: "Cubao, Quezon City",
+            b: "Quiapo, Manila",
+            c: "Sta. Mesa, Manila",
+            d: "Divisoria, Manila"
+        },
+        correctAnswer: "b",
+        correctFeedback: "Tumpak! Quiapo represent!",
+        incorrectFeedback: "Close, pero wrong pa rin!",
+        trivia: "Neneng B's hotdog sandwiches in Quiapo sparked an online sensation."
+    },
+    {
+        question: "What is Mommy Grace doing in the viral video when she says \"Okay na toh\"?",
+        options: {
+            a: "Exercising",
+            b: "Studying",
+            c: "Dancing",
+            d: "Cooking"
+        },
+        correctAnswer: "d",
+        correctFeedback: "Sobrang latina! Fierce sa kusina!",
+        incorrectFeedback: "Ano? Kaya pa ba?",
+        trivia: "Aside from her famous line, Mommy Grace's cooking always looks so yummy, making it even more entertaining."
+    }
 ];
 
 const elements = {

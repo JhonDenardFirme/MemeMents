@@ -10,71 +10,71 @@ let timerInterval = null;
 let remainingTime = 100;
 
 const quizData = [
-  {
-      question: "Who is the girl featured in the \"Okay na toh.\" meme?",
-      options: {
-          a: "Dani Barretto",
-          b: "Jessica Villarubin",
-          c: "Angelica Panganiban",
-          d: "Grace Tanfelix"
-      },
-      correctAnswer: "d",
-      correctFeedback: "Tumpak!",
-      incorrectFeedback: "Ayusin mo pagpili teh!",
-      trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
-  },
-  {
-      question: "What iconic line did Neneng B say in her viral video?",
-      options: {
-          a: "Ma, gutom na ako.",
-          b: "Ma, anong oras na?",
-          c: "Ma, ano ulam?",
-          d: "Ma, may jowa na ako."
-      },
-      correctAnswer: "c",
-      correctFeedback: "Tama! Gutom speaks louder than words!",
-      incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
-      trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
-  },
-  {
-      question: "Which nickname is often associated with Malupiton?",
-      options: {
-          a: "Sir",
-          b: "Boss/Bossing",
-          c: "Love/Mahal",
-          d: "Kuya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
-      incorrectFeedback: "Ano? Kaya pa ba?",
-      trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
-  },
-  {
-      question: "In a statement made by …, Tama? Tayo ay nasa __________.",
-      options: {
-          a: "Fast food chain",
-          b: "Fine dining restaurant",
-          c: "Five star hotel",
-          d: "Karindirya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Sobrang sosyalin ang peg!",
-      incorrectFeedback: "Nye, anyare? Di bagay!",
-      trivia: "This meme was from Toni Fowler's reality show."
-  },
-  {
-      question: "What is the name of Toni Fowler's daughter?",
-      options: {
-          a: "Trisha",
-          b: "Tyronia",
-          c: "Tanya",
-          d: "Trixie"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
-      incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
-      trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
-  }
+    {
+        question: "Ang sarap mo, __________! - Mike Enriquez",
+        options: {
+            a: "Pia",
+            b: "Yasmin",
+            c: "Thea",
+            d: "Lyka"
+        },
+        correctAnswer: "a",
+        correctFeedback: "Perfect ka no?",
+        incorrectFeedback: "Todo na yan? Sino si (wrong answer)?",
+        trivia: "Mike Enriquez said \"Ang Sarap mo, Pia\" at the end of their news report, and it quickly went viral."
+    },
+    {
+        question: "What does Diwata sell?",
+        options: {
+            a: "Taho",
+            b: "Halo-halo",
+            c: "Milktea",
+            d: "Pares"
+        },
+        correctAnswer: "d",
+        correctFeedback: "Tumpak! Best paired with chismis!",
+        incorrectFeedback: "Ayusin mo pagpili teh! (wrong answer)? Ibang vendor yata nasa isip mo!",
+        trivia: "Diwata’s viral food business involves selling pares."
+    },
+    {
+        question: "On what year did Toni Fowler post her first YouTube video?",
+        options: {
+            a: "2016",
+            b: "2017",
+            c: "2018",
+            d: "2019"
+        },
+        correctAnswer: "d",
+        correctFeedback: "Grabe ka! Alam mo pati ito?!",
+        incorrectFeedback: "Susmaryosep! Mami Oni must be sooo disappointed!",
+        trivia: "Toni Fowler’s YouTube journey began in 2019, and her videos have been a hit up until now because of her reality show."
+    },
+    {
+        question: "What percentage of votes did Ashley and AC receive during their eviction?",
+        options: {
+            a: "17.25%",
+            b: "25.5%",
+            c: "35.75%",
+            d: "45.89%"
+        },
+        correctAnswer: "a",
+        correctFeedback: "100% slayable ka diyan sis!",
+        incorrectFeedback: "(wrong answer)? Malayong malayo, sis! Baka mabuzzer ka ni Kuya Big Brother!",
+        trivia: "Ashley and AC were the first duo to get evicted, making their exit a memorable moment."
+    },
+    {
+        question: "K*nang*nam* naman… nasa restaurant ka naman na sosyal. kelan moko narinig na P*KIN*NGIN* NAMAN E nag gaganyan ako sa harap ni miss vina?",
+        options: {
+            a: "Always",
+            b: "Sometimes",
+            c: "Never",
+            d: "It depends"
+        },
+        correctAnswer: "c",
+        correctFeedback: "Galit pero classy, charot!",
+        incorrectFeedback: "Engkkk! Wrong ka diyan!",
+        trivia: "This iconic line humorously caught the tension between class and sass, becoming another viral meme of Toni Fowler."
+    }
 ];
 
 const elements = {
