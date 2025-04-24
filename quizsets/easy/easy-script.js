@@ -1,487 +1,192 @@
-const MAX_ROUNDS = 5;
-const SCORE_PER_CORRECT = 100;
+// Just a test script to change values dynamically
+// Can be deleted later on actual Backend Development
 
-let currentIndex = 0;
-let finalScore = 0;
-let selectedAnswers = [];
-let answerState = [];
-let isPaused = false;
-let timerInterval = null;
-let remainingTime = 100;
+document.addEventListener("DOMContentLoaded", () => {
 
-const quizData = [
-  {
-      question: "Who is the girl featured in the \"Okay na toh.\" meme?",
-      options: {
-          a: "Dani Barretto",
-          b: "Jessica Villarubin",
-          c: "Angelica Panganiban",
-          d: "Grace Tanfelix"
-      },
-      correctAnswer: "d",
-      correctFeedback: "Tumpak!",
-      incorrectFeedback: "Ayusin mo pagpili teh!",
-      trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
-  },
-  {
-      question: "What iconic line did Neneng B say in her viral video?",
-      options: {
-          a: "Ma, gutom na ako.",
-          b: "Ma, anong oras na?",
-          c: "Ma, ano ulam?",
-          d: "Ma, may jowa na ako."
-      },
-      correctAnswer: "c",
-      correctFeedback: "Tama! Gutom speaks louder than words!",
-      incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
-      trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
-  },
-  {
-      question: "Which nickname is often associated with Malupiton?",
-      options: {
-          a: "Sir",
-          b: "Boss/Bossing",
-          c: "Love/Mahal",
-          d: "Kuya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
-      incorrectFeedback: "Ano? Kaya pa ba?",
-      trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
-  },
-  {
-      question: "In a statement made by …, Tama? Tayo ay nasa __________.",
-      options: {
-          a: "Fast food chain",
-          b: "Fine dining restaurant",
-          c: "Five star hotel",
-          d: "Karindirya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Sobrang sosyalin ang peg!",
-      incorrectFeedback: "Nye, anyare? Di bagay!",
-      trivia: "This meme was from Toni Fowler's reality show."
-  },
-  {
-      question: "What is the name of Toni Fowler's daughter?",
-      options: {
-          a: "Trisha",
-          b: "Tyronia",
-          c: "Tanya",
-          d: "Trixie"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
-      incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
-      trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
-  }
-];
+    // Text Values
+    var score = document.querySelector("#score");
+    var questionText = document.querySelector("#question-text");
+    var optA = document.querySelector("#opt-a-value");
+    var optB = document.querySelector("#opt-b-value");
+    var optC = document.querySelector("#opt-c-value");
+    var optD = document.querySelector("#opt-d-value");
 
-const elements = {
-    quiz: {
-        score: document.querySelector("#score"),
-        questionText: document.querySelector("#question-text"),
-        questionIcon: document.querySelector(".question-img"),
-        memeImage: document.querySelector("#meme-image"),
-        memeImageContainer: document.querySelector(".meme-image-section"),
-        timerBar: document.querySelector('#timer-bar'),
-        resetButton: document.querySelector('.reset-img'),
-        resetSection: document.querySelector('.reset-section'),
-        pauseButton: document.querySelector('.pause-img'),
-        pauseSection: document.querySelector('.pause-section')
-    },
-    options: {
-        textA: document.querySelector("#opt-a-value"),
-        textB: document.querySelector("#opt-b-value"),
-        textC: document.querySelector("#opt-c-value"),
-        textD: document.querySelector("#opt-d-value"),
-        buttonA: document.querySelector("#opt-a"),
-        buttonB: document.querySelector("#opt-b"),
-        buttonC: document.querySelector("#opt-c"),
-        buttonD: document.querySelector("#opt-d")
-    },
-    progress: {
-        bar: document.querySelector("#progress-bar"),
-        value: document.querySelector("#progress-value")
-    },
-    pauseModal: {
-        container: document.createElement("div"),
-        resumeButton: document.createElement("div")
-    },
-    checkingModal: {
-        container: document.querySelector("#checking-modal"),
-        icon: document.querySelector("#checking-icon"),
-        tagline: document.querySelector("#checking-tagline"),
-        trivia: document.querySelector("#checking-trivia"),
-        nextButton: document.querySelector("#next-button")
-    },
-    evaluation: {
-        container: document.querySelector('#evaluation-container'),
-        resetButton: document.querySelector('#evaluation-container .reset-img'),
-        resetSection: document.querySelector('#evaluation-container .reset-section'),
-        quitButton: document.querySelector('.quit-section'),
-        finalScore: document.querySelector('#final-score'),
-        ratingText: document.querySelector('#rating-text'),
-        ratingBar: document.querySelector('#rating-bar-img'),
-        ratingImg: document.querySelector("#meme-image-eval"),
-        ratingImgContainer: document.querySelector(".meme-image-section-eval"),
-        answers: [
-            document.querySelector("#item1-ans"),
-            document.querySelector("#item2-ans"),
-            document.querySelector("#item3-ans"),
-            document.querySelector("#item4-ans"),
-            document.querySelector("#item5-ans")
-        ],
-        answerIcons: [
-            document.querySelector("#item1-img"),
-            document.querySelector("#item2-img"),
-            document.querySelector("#item3-img"),
-            document.querySelector("#item4-img"),
-            document.querySelector("#item5-img")
-        ]
-    }
-};
+    // Buttons
+    var optAButton = document.querySelector("#opt-a");
+    var optBButton = document.querySelector("#opt-b");
+    var optCButton = document.querySelector("#opt-c");
+    var optDButton = document.querySelector("#opt-d");
 
-initializeGame();
+    var memeImage = document.querySelector("#meme-image");
 
-function initializeGame() {
-    createPauseModal();
-    updateContent(currentIndex);
-    animateElements();
-    setupEventListeners();
-    startTimer();
-}
+    score.textContent = "500"
+    questionText.textContent = "A new question";
+    optA.textContent = "New Option A";
 
-function setupEventListeners() {
-    elements.options.buttonA.addEventListener("click", () => handleOptionClick("a"));
-    elements.options.buttonB.addEventListener("click", () => handleOptionClick("b"));
-    elements.options.buttonC.addEventListener("click", () => handleOptionClick("c"));
-    elements.options.buttonD.addEventListener("click", () => handleOptionClick("d"));
 
-    elements.checkingModal.nextButton.addEventListener('click', handleNextButtonClick);
-    
-    elements.quiz.resetButton.addEventListener('click', resetQuiz);
-    elements.quiz.resetSection.addEventListener('click', resetQuiz);
-    
-    elements.evaluation.resetButton.addEventListener('click', resetQuiz);
-    elements.evaluation.resetSection.addEventListener('click', resetQuiz);
-    
-    if (elements.quiz.pauseButton) {
-        elements.quiz.pauseButton.addEventListener('click', pauseGame);
-    }
-    if (elements.quiz.pauseSection) {
-        elements.quiz.pauseSection.addEventListener('click', pauseGame);
-    }
+    // Test for Event Listener on each Option Buttons
+    var currentAnswer = "";
 
-    elements.evaluation.quitButton.addEventListener('click', () => {
+    optAButton.addEventListener("click", () => {
+        currentAnswer = optA.textContent;
+        alert("Option A clicked:" + currentAnswer);
     });
-}
-
-function handleOptionClick(selectedOption) {
-    if (timerInterval) {
-        clearInterval(timerInterval);
-    }
-    
-    const currentQuestion = quizData[currentIndex];
-    const selectedText = currentQuestion.options[selectedOption];
-    const isCorrect = selectedOption === currentQuestion.correctAnswer;
-    
-    selectedAnswers[currentIndex] = selectedText;
-    answerState[currentIndex] = isCorrect;
-    
-    if (isCorrect) {
-        finalScore += SCORE_PER_CORRECT;
-    }
-    
-    showCheckingModal(currentIndex, isCorrect);
-}
-
-function pauseGame() {
-    if (!isPaused) {
-        isPaused = true;
-        
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            remainingTime = parseFloat(elements.quiz.timerBar.style.width) || 
-                            (elements.quiz.timerBar.offsetWidth / elements.quiz.timerBar.parentElement.offsetWidth * 100);
-        }
-        
-        elements.quiz.timerBar.style.animationPlayState = "paused";
-        elements.quiz.timerBar.classList.remove('shrinkTimer');
-        
-        elements.pauseModal.container.style.display = "flex";
-    }
-}
-
-function resumeGame() {
-    if (isPaused) {
-        isPaused = false;
-        
-        elements.pauseModal.container.style.display = "none";
-        
-        elements.quiz.timerBar.style.animationPlayState = "running";
-        
-        startTimer(remainingTime);
-    }
-}
-
-function startTimer(startFrom = 100) {
-    if (timerInterval) {
-        clearInterval(timerInterval);
-    }
-    
-    elements.quiz.timerBar.style.width = `${startFrom}%`;
-    
-    const decrementAmount = 0.1; 
-    timerInterval = setInterval(() => {
-        if (!isPaused) {
-            let currentWidth = parseFloat(elements.quiz.timerBar.style.width);
-            
-            if (currentWidth <= 0) {
-                clearInterval(timerInterval);
-                handleTimeout();
-            } else {
-                currentWidth -= decrementAmount;
-                elements.quiz.timerBar.style.width = `${currentWidth}%`;
-            }
-        }
-    }, 10); 
-}
-
-function handleTimeout() {
-    selectedAnswers[currentIndex] = "Time's up";
-    answerState[currentIndex] = false;
-    
-    showCheckingModal(currentIndex, false);
-    
-    elements.checkingModal.tagline.textContent = "Oops! Time's up!";
-    elements.checkingModal.trivia.textContent = "Remember to answer more quickly next time!";
-    
-    console.log(`Question ${currentIndex + 1} timed out and marked as incorrect`);
-}
-
-function handleNextButtonClick() {
-    currentIndex++;
-    resetCheckingModal();
-    elements.checkingModal.container.classList.remove('active');
-    
-    if (currentIndex < MAX_ROUNDS) {
-        updateContent(currentIndex);
-        resetAnimate();
-        animateElements();
-        updateProgressBar(currentIndex);
-        
-        startTimer();
-    } else {
-        updateProgressBar(MAX_ROUNDS);
-        
-        if (timerInterval) {
-            clearInterval(timerInterval);
-        }
-        
-        showEvaluationScreen();
-    }
-}
-
-function updateContent(index) {
-    elements.quiz.score.textContent = finalScore.toString();
-    elements.quiz.questionText.textContent = quizData[index].question;
-    elements.options.textA.textContent = quizData[index].options.a;
-    elements.options.textB.textContent = quizData[index].options.b;
-    elements.options.textC.textContent = quizData[index].options.c;
-    elements.options.textD.textContent = quizData[index].options.d;
-    elements.quiz.memeImage.src = `../../images/quiz-assets/meme-img-easy/${(index+1).toString()}.jpg`;
-}
-
-function updateProgressBar(index) {
-    const percentage = (index / MAX_ROUNDS) * 100;
-    elements.progress.bar.style.width = `${percentage}%`;
-    elements.progress.value.textContent = `${Math.round(percentage)}%`;
-}
-
-function showCheckingModal(index, isCorrect) {
-    elements.checkingModal.container.classList.add("active");
-    
-    elements.checkingModal.icon.src = isCorrect 
-        ? "../../images/icons/check.png" 
-        : "../../images/icons/cross.png";
-        
-    const currentQuestion = quizData[index];
-    
-    if (isCorrect) {
-        elements.checkingModal.tagline.textContent = currentQuestion.correctFeedback;
-    } else {
-        elements.checkingModal.tagline.textContent = currentQuestion.incorrectFeedback;
-    }
-    
-    elements.checkingModal.trivia.textContent = currentQuestion.trivia;
-    
-    elements.checkingModal.icon.classList.add('iconPopup3');
-    elements.checkingModal.tagline.classList.add('taglineFadeIn');
-    elements.checkingModal.trivia.classList.add('triviaFadeIn');
-    elements.checkingModal.nextButton.classList.add('iconPopup4');
-}
-
-function resetCheckingModal() {
-    elements.checkingModal.icon.classList.remove('iconPopup3');
-    elements.checkingModal.tagline.classList.remove('taglineFadeIn');
-    elements.checkingModal.trivia.classList.remove('triviaFadeIn');
-    elements.checkingModal.nextButton.classList.remove('iconPopup4');
-    
-    void elements.checkingModal.icon.offsetWidth;
-}
-
-function createPauseModal() {
-    elements.pauseModal.container.className = "pause-modal";
-    elements.pauseModal.container.style.position = "fixed";
-    elements.pauseModal.container.style.top = "0";
-    elements.pauseModal.container.style.left = "0";
-    elements.pauseModal.container.style.width = "100%";
-    elements.pauseModal.container.style.height = "100%";
-    elements.pauseModal.container.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-    elements.pauseModal.container.style.display = "none";
-    elements.pauseModal.container.style.justifyContent = "center";
-    elements.pauseModal.container.style.alignItems = "center";
-    elements.pauseModal.container.style.zIndex = "1000";
-    
-    elements.pauseModal.resumeButton.className = "resume-button blue-gradient";
-    elements.pauseModal.resumeButton.textContent = "RESUME GAME";
-    elements.pauseModal.resumeButton.style.padding = "15px 30px";
-    elements.pauseModal.resumeButton.style.borderRadius = "8px";
-    elements.pauseModal.resumeButton.style.fontSize = "18px";
-    elements.pauseModal.resumeButton.style.fontWeight = "bold";
-    elements.pauseModal.resumeButton.style.cursor = "pointer";
-
-    elements.pauseModal.container.appendChild(elements.pauseModal.resumeButton);
-
-    document.body.appendChild(elements.pauseModal.container);
-
-    elements.pauseModal.resumeButton.addEventListener('click', resumeGame);
-}
-
-function showEvaluationScreen() {
-    elements.evaluation.container.classList.add('active');
-    elements.evaluation.finalScore.textContent = finalScore.toString();
-
-    const ratingConfig = getRatingConfig(finalScore);
-    elements.evaluation.ratingText.textContent = ratingConfig.text;
-    elements.evaluation.ratingText.className = ''; 
-    elements.evaluation.ratingText.classList.add(ratingConfig.class);
-    elements.evaluation.ratingBar.src = ratingConfig.barImage;
-    elements.evaluation.ratingImg.src = ratingConfig.characterImage;
-    
-    elements.evaluation.ratingImgContainer.classList.add("slidetopMemeImageContainer");
-    
-    for (let i = 0; i < MAX_ROUNDS; i++) {
-        elements.evaluation.answerIcons[i].src = answerState[i] 
-            ? "../../images/icons/check.png" 
-            : "../../images/icons/cross.png";
-            
-        elements.evaluation.answers[i].textContent = selectedAnswers[i] || "No answer";
-    }
-}
-
-function getRatingConfig(score) {
-    const configs = {
-        0: {
-            text: "SANA SINAKTAN MO NA LANG AKO",
-            class: "text-red-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar0.png",
-            characterImage: "../../images/quiz-assets/rating-img/0.png"
-        },
-        100: {
-            text: "SUSMARYOSEP, KAYA PA BA TEH",
-            class: "text-red-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar1.png",
-            characterImage: "../../images/quiz-assets/rating-img/1.png"
-        },
-        200: {
-            text: "JUZKODAI, ANYARE SA'YO?",
-            class: "text-red-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar2.png",
-            characterImage: "../../images/quiz-assets/rating-img/2.png"
-        },
-        300: {
-            text: "SIGE NA NGA, OKAY NA 'TO",
-            class: "text-orange-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar3.png",
-            characterImage: "../../images/quiz-assets/rating-img/3.png"
-        },
-        400: {
-            text: "TAAS NAMAN, KAKA-FB MO YAN",
-            class: "text-green-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar4.png",
-            characterImage: "../../images/quiz-assets/rating-img/4.png"
-        },
-        500: {
-            text: "GRABE, MEMER GODZ SI IDOLORDZ",
-            class: "text-blue-gradient",
-            barImage: "../../images/quiz-assets/rating-bar/rating-bar5.png",
-            characterImage: "../../images/quiz-assets/rating-img/5.png"
-        }
-    };
-    
-    return configs[score] || configs[0];
-}
-
-function resetQuiz() {
-    if (timerInterval) {
-        clearInterval(timerInterval);
-    }
-    
-    isPaused = false;
-    remainingTime = 100;
-    
-    elements.pauseModal.container.style.display = "none";
-    
-    currentIndex = 0;
-    finalScore = 0;
-    selectedAnswers = [];
-    answerState = [];
-    
-    updateContent(currentIndex);
-    updateProgressBar(0);
-    
-    elements.checkingModal.container.classList.remove('active');
-    elements.evaluation.container.classList.remove('active');
-    
-    resetAnimate();
-    animateElements();
-
-    startTimer();
-    
-    console.log("Quiz has been reset!");
-}
+      
+    optBButton.addEventListener("click", () => {
+        alert("Option B clicked:" + currentAnswer);
+    });
+      
+    optCButton.addEventListener("click", () => {
+        alert("Option C clicked:" + currentAnswer);
+    });
+      
+    optDButton.addEventListener("click", () => {
+        alert("Option D clicked:" + currentAnswer);
+    });
+      
+    // Test for changing Meme Image and Progress Bar based on Current Index
+    var currentIndex = 0;
+    memeImage.src = `../../images/quiz-assets/meme-img-easy/${(currentIndex+1).toString()}.jpg`
 
 
-function animateElements() {
-    elements.options.buttonA.classList.add("slideRightA");
-    elements.options.buttonB.classList.add("slideRightB");
-    elements.options.buttonC.classList.add("slideRightC");
-    elements.options.buttonD.classList.add("slideRightD");
-    
-    elements.quiz.memeImageContainer.classList.add("slidetopMemeImageContainer");
-    elements.quiz.questionIcon.classList.add('iconPopup');
-    elements.quiz.questionText.classList.add('questionFadeIn');
-    elements.quiz.timerBar.classList.add('shrinkTimer');
-}
+    // Test for Modal/ Checking Overlay
 
-function resetAnimate() {
-    elements.options.buttonA.classList.remove("slideRightA");
-    elements.options.buttonB.classList.remove("slideRightB");
-    elements.options.buttonC.classList.remove("slideRightC");
-    elements.options.buttonD.classList.remove("slideRightD");
+
+
+    var checkingModal = document.querySelector("#checking-modal");
+    var nextButton = document.querySelector("#next-button");
+
+    var checkingIcon = document.querySelector("#checking-icon");        // Yung icon. Can only be Check or Cross depending on answer
+    var checkingTagline = document.querySelector("#checking-tagline");  // Yung malaki
+    var checkingTrivia = document.querySelector("#checking-trivia");    // Yung text description
+
+    checkingIcon.src = "../../images/icons/cross.png"
+    checkingTagline.textContent = "Galing naman ni Idol";
+    checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";
+
+
+    // Show the modal after clicking an option
+    optAButton.addEventListener("click", () => {
+      checkingModal.classList.add("active");
+      checkingIcon.src = "../../images/icons/check.png"
+      checkingTagline.textContent = "Galing naman ni Idol";
+      checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";  
+    });
+
+    optBButton.addEventListener("click", () => {
+      checkingModal.classList.add("active");
+      checkingIcon.src = "../../images/icons/cross.png"
+      checkingTagline.textContent = "Ayusin mo Teh"; 
+      checkingTrivia.textContent = "Alam mo ba na ganito ganyan. Hatdog";  
+    });
+
+
+    // Remove modal and update contents after clicking next
+    nextButton.addEventListener("click", () => {
+      currentIndex++;
+      //score
+      checkingModal.classList.remove("active");
+
+
+      // Progress Bar will automatically be updated based on current index
+      var progressBar = document.querySelector("#progress-bar");
+      var progressValue = document.querySelector("#progress-value");
+      const totalQuestions = 5;
+      let percentage = (currentIndex / totalQuestions) * 100;
+      progressBar.style.width = `${percentage}%`;
+      progressValue.textContent = `${Math.round(percentage)}%`;
+
+
+      // Kulang pa ng logic para patigil if question number 5 na
+    });
+
+    /*
+      Bali ikaw na bahala dito Irron hahahaha
+      Naka if else kung correct answer yung checking Icon
+      Then, perquestion may sariling checkingTagline and checkingTrivia, bali connected siya doon sa currentIndex 
+      And then maaactivate lang tong layer na to once may naclick na button. Magdadagdag ng class na "active"
+      And then pagclick ng nextButton, tatanggalin yung class "active", then increment currentIndex, and update ng score value if correct or not
+      Bali parang guide lang to para di mo sisimulan from scratch yung code. Goodluckk hahahaha.
+      Sa susunod magpupush pa ako ng changes for mobile version and animations. Makipagcoordinate na lang ako sayo sa next days since connected yung animations dito sa JS
+      And then ikaw na rin bahala dun sa ipaplay na Voice Over, iloloop na lang yun then naka hide yung player
+      */ 
+
+
+
+
+
+    optAButton.classList.add("slideRightA");
+    optBButton.classList.add("slideRightB");
+    optCButton.classList.add("slideRightC");
+    optDButton.classList.add("slideRightD");
+
     
-    elements.quiz.memeImageContainer.classList.remove("slidetopMemeImageContainer");
-    elements.quiz.questionIcon.classList.remove('iconPopup');
-    elements.quiz.questionText.classList.remove('questionFadeIn');
-    elements.quiz.timerBar.classList.remove('shrinkTimer');
-    
-    void elements.options.buttonA.offsetWidth;
-    void elements.options.buttonB.offsetWidth;
-    void elements.options.buttonC.offsetWidth;
-    void elements.options.buttonD.offsetWidth;
-    void elements.quiz.memeImageContainer.offsetWidth;
-    void elements.quiz.questionIcon.offsetWidth;
-    void elements.quiz.questionText.offsetWidth;
-}
+
+
+
+    var memeImageContainer = document.querySelector(".meme-image-section");
+    memeImageContainer.classList.add("slidetopMemeImageContainer")
+
+    var questionIcon = document.querySelector(".question-img");
+    var questionText = document.querySelector(".question-text");
+
+    questionIcon.classList.add('iconPopup');
+    questionText.classList.add('questionFadeIn');
+
+
+    var timerBar = document.querySelector('#timer-bar');
+    timerBar.classList.add('shrinkTimer');
+
+
+    /*
+
+      INITIALIZATION OF ELEMENTS
+
+      ALl opacity to 0
+      Change content to Index
+        - Question Text
+        - Options
+        - Image
+      Add Animations
+        - Question Icon
+        - Question Text
+        - Image
+        - Options
+        - Timer
+
+
+      Click
+        - Save Answer (Option Text Content to an Array)
+        - Save Answer Status (Correct or Wrong)
+        - Update Score (Add 100 if Correct)
+        - Display the Modal
+
+      Timer Runs Out
+        - Save Answer (None or Timer Ran Out text)
+        - Save Answer Status (Automatically Wrong)
+        - No Update Score
+        - Display the Modal
+
+
+      Displaying the Modal
+        - Change content according to index
+          - Tagline
+          - Description
+
+        - Change Icon according to status
+          - Correct
+          - Wrong
+
+        - Apply Animations
+          - Icon
+          - Tagline
+          - Text
+
+      Click Next Button
+        - Change content to Index
+
+    */
+
+
+
+});
