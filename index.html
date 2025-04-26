@@ -34,7 +34,7 @@
                 <a href="#about"><li>About</li></a>
               </ul>
               
-                <ul>
+                <ul class="nav-full">
                     <a href="#home"><li>Home</li></a>
                     <a href="#about"><li>Statistics</li></a>
                     <li>
@@ -617,7 +617,7 @@
       </script>
       <script>
         const burger = document.getElementById("burger");
-        const navLinks = document.querySelector(".navbar ul");
+        const navLinks = document.querySelector(".navLinks");
       
         burger.addEventListener("click", () => {
           navLinks.classList.toggle("show");
