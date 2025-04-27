@@ -8,74 +8,174 @@ let answerState = [];
 let isPaused = false;
 let timerInterval = null;
 let remainingTime = 100;
+let bgmPlaying = true;
+let bgmAudio = null;
 
 const quizData = [
-  {
-      question: "Who is the girl featured in the \"Okay na toh.\" meme?",
-      options: {
-          a: "Dani Barretto",
-          b: "Jessica Villarubin",
-          c: "Angelica Panganiban",
-          d: "Grace Tanfelix"
-      },
-      correctAnswer: "d",
-      correctFeedback: "Tumpak!",
-      incorrectFeedback: "Ayusin mo pagpili teh!",
-      trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
-  },
-  {
-      question: "What iconic line did Neneng B say in her viral video?",
-      options: {
-          a: "Ma, gutom na ako.",
-          b: "Ma, anong oras na?",
-          c: "Ma, ano ulam?",
-          d: "Ma, may jowa na ako."
-      },
-      correctAnswer: "c",
-      correctFeedback: "Tama! Gutom speaks louder than words!",
-      incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
-      trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
-  },
-  {
-      question: "Which nickname is often associated with Malupiton?",
-      options: {
-          a: "Sir",
-          b: "Boss/Bossing",
-          c: "Love/Mahal",
-          d: "Kuya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
-      incorrectFeedback: "Ano? Kaya pa ba?",
-      trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
-  },
-  {
-      question: "In a statement made by …, Tama? Tayo ay nasa __________.",
-      options: {
-          a: "Fast food chain",
-          b: "Fine dining restaurant",
-          c: "Five star hotel",
-          d: "Karindirya"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Sobrang sosyalin ang peg!",
-      incorrectFeedback: "Nye, anyare? Di bagay!",
-      trivia: "This meme was from Toni Fowler's reality show."
-  },
-  {
-      question: "What is the name of Toni Fowler's daughter?",
-      options: {
-          a: "Trisha",
-          b: "Tyronia",
-          c: "Tanya",
-          d: "Trixie"
-      },
-      correctAnswer: "b",
-      correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
-      incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
-      trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
-  }
-];
+    {
+        question: "Who is the girl featured in the \"Okay na toh.\" meme?",
+        options: {
+            a: "Dani Barretto",
+            b: "Jessica Villarubin",
+            c: "Angelica Panganiban",
+            d: "Grace Tanfelix"
+        },
+        correctAnswer: "d",
+        correctFeedback: "Tumpak!",
+        incorrectFeedback: "Ayusin mo pagpili teh!",
+        trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
+    },
+    {
+        question: "What iconic line did Neneng B say in her viral video?",
+        options: {
+            a: "Ma, gutom na ako.",
+            b: "Ma, anong oras na?",
+            c: "Ma, ano ulam?",
+            d: "Ma, may jowa na ako."
+        },
+        correctAnswer: "c",
+        correctFeedback: "Tama! Gutom speaks louder than words!",
+        incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
+        trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
+    },
+    {
+        question: "Which nickname is often associated with Malupiton?",
+        options: {
+            a: "Sir",
+            b: "Boss/Bossing",
+            c: "Love/Mahal",
+            d: "Kuya"
+        },
+        correctAnswer: "b",
+        correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
+        incorrectFeedback: "Ano? Kaya pa ba?",
+        trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
+    },
+    {
+        question: "In a statement made by …, Tama? Tayo ay nasa __________.",
+        options: {
+            a: "Fast food chain",
+            b: "Fine dining restaurant",
+            c: "Five star hotel",
+            d: "Karindirya"
+        },
+        correctAnswer: "b",
+        correctFeedback: "Sobrang sosyalin ang peg!",
+        incorrectFeedback: "Nye, anyare? Di bagay!",
+        trivia: "This meme was from Toni Fowler's reality show."
+    },
+    {
+        question: "What is the name of Toni Fowler's daughter?",
+        options: {
+            a: "Trisha",
+            b: "Tyronia",
+            c: "Tanya",
+            d: "Trixie"
+        },
+        correctAnswer: "b",
+        correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
+        incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
+        trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
+    }
+  ];
+
+const audioSystem = {
+    bgm: new Audio("../../audio/bgm.mp3"),
+    correctAnswer: new Audio("../../audio/correct.mp3"),
+    wrongAnswer: new Audio("../../audio/wrong.mp3"),
+    timeout: new Audio("../../audio/timeout.mp3"),
+    buttonClick: new Audio("../../audio/click.mp3"),
+    voicelines: [
+        new Audio("../../audio/q1.mp3"),
+        new Audio("../../audio/q2.mp3"),
+        new Audio("../../audio/q3.mp3"),
+        new Audio("../../audio/q4.mp3"),
+        new Audio("../../audio/q5.mp3"),
+    ],
+    
+    init() {
+        this.bgm.loop = true;
+        this.bgm.volume = 0.4;
+        this.bgm.preload = "auto";
+        
+        this.correctAnswer.volume = 0.7;
+        this.wrongAnswer.volume = 0.7;
+        this.timeout.volume = 0.7;
+        this.buttonClick.volume = 0.5;
+        
+        this.voicelines.forEach(voice => {
+            voice.volume = 0.8;
+            voice.preload = "auto";
+        });
+    },
+    
+    playBGM() {
+        this.bgm.pause();
+        this.bgm.currentTime = 0;
+        
+        const playPromise = this.bgm.play();
+        
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    bgmPlaying = true;
+                    console.log("BGM started successfully");
+                })
+                .catch(error => {
+                    console.warn("BGM autoplay prevented:", error);
+                    bgmPlaying = false;
+                });
+        } else {
+            bgmPlaying = true;
+        }
+    },
+    
+    pauseBGM() {
+        this.bgm.pause();
+        bgmPlaying = false;
+    },
+    
+    playQuestionVoice(index) {
+        this.voicelines.forEach(voice => {
+            voice.pause();
+            voice.currentTime = 0;
+        });
+        
+        if (this.voicelines[index]) {
+            this.voicelines[index].play().catch(error => {
+                console.warn("Voice playback prevented:", error);
+            });
+        }
+    },
+    
+    playCorrect() {
+        this.correctAnswer.currentTime = 0;
+        this.correctAnswer.play().catch(error => {
+            console.warn("Sound playback prevented:", error);
+        });
+    },
+    
+    playWrong() {
+        this.wrongAnswer.currentTime = 0;
+        this.wrongAnswer.play().catch(error => {
+            console.warn("Sound playback prevented:", error);
+        });
+    },
+    
+    playTimeout() {
+        this.timeout.currentTime = 0;
+        this.timeout.play().catch(error => {
+            console.warn("Sound playback prevented:", error);
+        });
+    },
+    
+    playClick() {
+        this.buttonClick.currentTime = 0;
+        this.buttonClick.play().catch(error => {
+            console.warn("Sound playback prevented:", error);
+        });
+    }
+};
 
 const elements = {
     quiz: {
@@ -106,7 +206,11 @@ const elements = {
     },
     pauseModal: {
         container: document.createElement("div"),
-        resumeButton: document.createElement("div")
+        resumeButton: document.createElement("div"),
+        audioControls: document.createElement("div"),
+        audioTitle: document.createElement("div"),
+        bgmToggle: document.createElement("button"),
+        sfxToggle: document.createElement("button")
     },
     checkingModal: {
         container: document.querySelector("#checking-modal"),
@@ -145,35 +249,79 @@ const elements = {
 initializeGame();
 
 function initializeGame() {
+    audioSystem.init();
+    
     createPauseModal();
     updateContent(currentIndex);
     animateElements();
     setupEventListeners();
     startTimer();
+
+    audioSystem.playBGM();
+    
+    document.body.addEventListener('click', function() {
+        if (!bgmPlaying) {
+            audioSystem.playBGM();
+        }
+    }, { once: true });
 }
 
 function setupEventListeners() {
-    elements.options.buttonA.addEventListener("click", () => handleOptionClick("a"));
-    elements.options.buttonB.addEventListener("click", () => handleOptionClick("b"));
-    elements.options.buttonC.addEventListener("click", () => handleOptionClick("c"));
-    elements.options.buttonD.addEventListener("click", () => handleOptionClick("d"));
+    elements.options.buttonA.addEventListener("click", () => {
+        audioSystem.playClick();
+        handleOptionClick("a");
+    });
+    elements.options.buttonB.addEventListener("click", () => {
+        audioSystem.playClick();
+        handleOptionClick("b");
+    });
+    elements.options.buttonC.addEventListener("click", () => {
+        audioSystem.playClick();
+        handleOptionClick("c");
+    });
+    elements.options.buttonD.addEventListener("click", () => {
+        audioSystem.playClick();
+        handleOptionClick("d");
+    });
 
-    elements.checkingModal.nextButton.addEventListener('click', handleNextButtonClick);
+    elements.checkingModal.nextButton.addEventListener('click', () => {
+        audioSystem.playClick();
+        handleNextButtonClick();
+    });
     
-    elements.quiz.resetButton.addEventListener('click', resetQuiz);
-    elements.quiz.resetSection.addEventListener('click', resetQuiz);
+    elements.quiz.resetButton.addEventListener('click', () => {
+        audioSystem.playClick();
+        resetQuiz();
+    });
+    elements.quiz.resetSection.addEventListener('click', () => {
+        audioSystem.playClick();
+        resetQuiz();
+    });
     
-    elements.evaluation.resetButton.addEventListener('click', resetQuiz);
-    elements.evaluation.resetSection.addEventListener('click', resetQuiz);
+    elements.evaluation.resetButton.addEventListener('click', () => {
+        audioSystem.playClick();
+        resetQuiz();
+    });
+    elements.evaluation.resetSection.addEventListener('click', () => {
+        audioSystem.playClick();
+        resetQuiz();
+    });
     
     if (elements.quiz.pauseButton) {
-        elements.quiz.pauseButton.addEventListener('click', pauseGame);
+        elements.quiz.pauseButton.addEventListener('click', () => {
+            audioSystem.playClick();
+            pauseGame();
+        });
     }
     if (elements.quiz.pauseSection) {
-        elements.quiz.pauseSection.addEventListener('click', pauseGame);
+        elements.quiz.pauseSection.addEventListener('click', () => {
+            audioSystem.playClick();
+            pauseGame();
+        });
     }
 
     elements.evaluation.quitButton.addEventListener('click', () => {
+        audioSystem.playClick();
     });
 }
 
@@ -191,6 +339,9 @@ function handleOptionClick(selectedOption) {
     
     if (isCorrect) {
         finalScore += SCORE_PER_CORRECT;
+        audioSystem.playCorrect();
+    } else {
+        audioSystem.playWrong();
     }
     
     showCheckingModal(currentIndex, isCorrect);
@@ -209,19 +360,76 @@ function pauseGame() {
         elements.quiz.timerBar.style.animationPlayState = "paused";
         elements.quiz.timerBar.classList.remove('shrinkTimer');
         
+        updateAudioButtonStates();
+        
         elements.pauseModal.container.style.display = "flex";
+    }
+}
+
+function updateAudioButtonStates() {
+    if (bgmPlaying) {
+        elements.pauseModal.bgmToggle.innerHTML = "🎵 Music: ON";
+        elements.pauseModal.bgmToggle.style.backgroundColor = "#3498db";
+    } else {
+        elements.pauseModal.bgmToggle.innerHTML = "🎵 Music: OFF";
+        elements.pauseModal.bgmToggle.style.backgroundColor = "#e74c3c";
+    }
+    
+    if (!audioSystem.correctAnswer.muted) {
+        elements.pauseModal.sfxToggle.innerHTML = "🔊 Sound: ON";
+        elements.pauseModal.sfxToggle.style.backgroundColor = "#3498db";
+    } else {
+        elements.pauseModal.sfxToggle.innerHTML = "🔊 Sound: OFF";
+        elements.pauseModal.sfxToggle.style.backgroundColor = "#e74c3c";
     }
 }
 
 function resumeGame() {
     if (isPaused) {
         isPaused = false;
+        audioSystem.playClick();
         
         elements.pauseModal.container.style.display = "none";
         
         elements.quiz.timerBar.style.animationPlayState = "running";
         
         startTimer(remainingTime);
+    }
+}
+
+function toggleBGM() {
+    if (bgmPlaying) {
+        audioSystem.pauseBGM();
+        elements.pauseModal.bgmToggle.innerHTML = "🎵 Music: OFF";
+        elements.pauseModal.bgmToggle.style.backgroundColor = "#e74c3c";
+    } else {
+        audioSystem.playBGM();
+        elements.pauseModal.bgmToggle.innerHTML = "🎵 Music: ON";
+        elements.pauseModal.bgmToggle.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleSFX() {
+    if (audioSystem.correctAnswer.muted) {
+        audioSystem.correctAnswer.muted = false;
+        audioSystem.wrongAnswer.muted = false;
+        audioSystem.timeout.muted = false;
+        audioSystem.buttonClick.muted = false;
+        audioSystem.voicelines.forEach(voice => {
+            voice.muted = false;
+        });
+        elements.pauseModal.sfxToggle.innerHTML = "🔊 Sound: ON";
+        elements.pauseModal.sfxToggle.style.backgroundColor = "#3498db";
+    } else {
+        audioSystem.correctAnswer.muted = true;
+        audioSystem.wrongAnswer.muted = true;
+        audioSystem.timeout.muted = true;
+        audioSystem.buttonClick.muted = true;
+        audioSystem.voicelines.forEach(voice => {
+            voice.muted = true;
+        });
+        elements.pauseModal.sfxToggle.innerHTML = "🔊 Sound: OFF";
+        elements.pauseModal.sfxToggle.style.backgroundColor = "#e74c3c";
     }
 }
 
@@ -249,6 +457,8 @@ function startTimer(startFrom = 100) {
 }
 
 function handleTimeout() {
+    audioSystem.playTimeout();
+    
     selectedAnswers[currentIndex] = "Time's up";
     answerState[currentIndex] = false;
     
@@ -270,6 +480,8 @@ function handleNextButtonClick() {
         resetAnimate();
         animateElements();
         updateProgressBar(currentIndex);
+
+        audioSystem.playQuestionVoice(currentIndex);
         
         startTimer();
     } else {
@@ -291,6 +503,10 @@ function updateContent(index) {
     elements.options.textC.textContent = quizData[index].options.c;
     elements.options.textD.textContent = quizData[index].options.d;
     elements.quiz.memeImage.src = `../../images/quiz-assets/meme-img-easy/${(index+1).toString()}.jpg`;
+
+    setTimeout(() => {
+        audioSystem.playQuestionVoice(index);
+    }, 1000);
 }
 
 function updateProgressBar(index) {
@@ -343,7 +559,47 @@ function createPauseModal() {
     elements.pauseModal.container.style.justifyContent = "center";
     elements.pauseModal.container.style.alignItems = "center";
     elements.pauseModal.container.style.zIndex = "1000";
+    elements.pauseModal.container.style.flexDirection = "column";
+    elements.pauseModal.container.style.gap = "20px";
     
+    elements.pauseModal.audioTitle.textContent = "SOUND SETTINGS";
+    elements.pauseModal.audioTitle.style.color = "white";
+    elements.pauseModal.audioTitle.style.fontSize = "24px";
+    elements.pauseModal.audioTitle.style.fontWeight = "bold";
+    elements.pauseModal.audioTitle.style.marginBottom = "10px";
+
+    elements.pauseModal.audioControls.className = "audio-controls-pause";
+    elements.pauseModal.audioControls.style.display = "flex";
+    elements.pauseModal.audioControls.style.flexDirection = "column";
+    elements.pauseModal.audioControls.style.gap = "15px";
+    elements.pauseModal.audioControls.style.marginBottom = "20px";
+
+    elements.pauseModal.bgmToggle.className = "audio-button";
+    elements.pauseModal.bgmToggle.innerHTML = "🎵 Music: ON";
+    elements.pauseModal.bgmToggle.style.padding = "12px 30px";
+    elements.pauseModal.bgmToggle.style.backgroundColor = "#3498db";
+    elements.pauseModal.bgmToggle.style.color = "white";
+    elements.pauseModal.bgmToggle.style.border = "none";
+    elements.pauseModal.bgmToggle.style.borderRadius = "8px";
+    elements.pauseModal.bgmToggle.style.fontSize = "16px";
+    elements.pauseModal.bgmToggle.style.fontWeight = "bold";
+    elements.pauseModal.bgmToggle.style.cursor = "pointer";
+    elements.pauseModal.bgmToggle.style.width = "200px";
+    elements.pauseModal.bgmToggle.style.textAlign = "center";
+
+    elements.pauseModal.sfxToggle.className = "audio-button";
+    elements.pauseModal.sfxToggle.innerHTML = "🔊 Sound: ON";
+    elements.pauseModal.sfxToggle.style.padding = "12px 30px";
+    elements.pauseModal.sfxToggle.style.backgroundColor = "#3498db";
+    elements.pauseModal.sfxToggle.style.color = "white";
+    elements.pauseModal.sfxToggle.style.border = "none";
+    elements.pauseModal.sfxToggle.style.borderRadius = "8px";
+    elements.pauseModal.sfxToggle.style.fontSize = "16px";
+    elements.pauseModal.sfxToggle.style.fontWeight = "bold";
+    elements.pauseModal.sfxToggle.style.cursor = "pointer";
+    elements.pauseModal.sfxToggle.style.width = "200px";
+    elements.pauseModal.sfxToggle.style.textAlign = "center";
+
     elements.pauseModal.resumeButton.className = "resume-button blue-gradient";
     elements.pauseModal.resumeButton.textContent = "RESUME GAME";
     elements.pauseModal.resumeButton.style.padding = "15px 30px";
@@ -351,7 +607,24 @@ function createPauseModal() {
     elements.pauseModal.resumeButton.style.fontSize = "18px";
     elements.pauseModal.resumeButton.style.fontWeight = "bold";
     elements.pauseModal.resumeButton.style.cursor = "pointer";
+    elements.pauseModal.resumeButton.style.width = "200px";
+    elements.pauseModal.resumeButton.style.textAlign = "center";
 
+    elements.pauseModal.bgmToggle.addEventListener('click', () => {
+        audioSystem.playClick();
+        toggleBGM();
+    });
+    
+    elements.pauseModal.sfxToggle.addEventListener('click', () => {
+        audioSystem.playClick();
+        toggleSFX();
+    });
+
+    elements.pauseModal.audioControls.appendChild(elements.pauseModal.bgmToggle);
+    elements.pauseModal.audioControls.appendChild(elements.pauseModal.sfxToggle);
+
+    elements.pauseModal.container.appendChild(elements.pauseModal.audioTitle);
+    elements.pauseModal.container.appendChild(elements.pauseModal.audioControls);
     elements.pauseModal.container.appendChild(elements.pauseModal.resumeButton);
 
     document.body.appendChild(elements.pauseModal.container);
@@ -362,6 +635,14 @@ function createPauseModal() {
 function showEvaluationScreen() {
     elements.evaluation.container.classList.add('active');
     elements.evaluation.finalScore.textContent = finalScore.toString();
+
+    if (finalScore >= 400) {
+        audioSystem.playCorrect(); 
+    } else if (finalScore >= 200) {
+        audioSystem.playClick(); 
+    } else {
+        audioSystem.playWrong(); 
+    }
 
     const ratingConfig = getRatingConfig(finalScore);
     elements.evaluation.ratingText.textContent = ratingConfig.text;
@@ -452,7 +733,6 @@ function resetQuiz() {
     
     console.log("Quiz has been reset!");
 }
-
 
 function animateElements() {
     elements.options.buttonA.classList.add("slideRightA");
