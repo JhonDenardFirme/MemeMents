@@ -22,7 +22,7 @@
 }
 .testimonials-grid {
   display: flex;
-  justify-content: center; /* center the whole row */
+  justify-content: center; /* center the whole row * /
   gap: 24px; /* space between cards */
   flex-wrap: nowrap; /* keeps them on one row */
   max-width: 100%; /* don't restrict too much */
