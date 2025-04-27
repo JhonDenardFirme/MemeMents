@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="../../globalstyles.css" rel="stylesheet">
-    <link href="./easy-style.css" rel="stylesheet">
+    <link href="../quiz-style.css" rel="stylesheet">
 </head>
 <body>
     
     <section class="page-container">
         <nav class="navbar">
-            <p class="logo-text">MemeMents</p>
+            <a href="../../index.html"><p class="logo-text">MemeMents</p></a>
+            
             <div class="quiz-controls">
                 <div class="score-section">
                     <p id="score" class="score-text text-blue-gradient">400</p>
@@ -24,6 +25,10 @@
                 <div class="reset-section">
                     <p class="reset-text text-blue-gradient">RESET</p>
                     <img class="reset-img" src="../../images/icons/reset.png">
+                </div>
+                <div class="pause-section">
+                    <p class="pause-text text-blue-gradient">PAUSE</p>
+                    <img class="pause-img" src="../../images/icons/star.png">
                 </div>
             </div>
         </nav>
@@ -189,6 +194,6 @@
             </div>
     </section>
 
-    <script src="./sample-script.js"></script>
+    <script src="./easy-script.js"></script>
 </body>
 </html>
