@@ -503,7 +503,7 @@ function updateContent(index) {
     elements.options.textB.textContent = quizData[index].options.b;
     elements.options.textC.textContent = quizData[index].options.c;
     elements.options.textD.textContent = quizData[index].options.d;
-    elements.quiz.memeImage.src = `../../images/quiz-assets/X${(index + 1).toString()}.gif`;
+    elements.quiz.memeImage.src = `../../images/quiz-assets/gifs/X${(index + 1).toString()}.gif`;
 
     setTimeout(() => {
         audioSystem.playQuestionVoice(index);
