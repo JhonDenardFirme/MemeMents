@@ -34,7 +34,7 @@
                 <a href="#about"><li>About</li></a>
               </ul>
               
-                <ul>
+                <ul class="nav-full">
                     <a href="#home"><li>Home</li></a>
                     <a href="#about"><li>Statistics</li></a>
                     <li>
@@ -316,7 +316,7 @@
 
     <!--Testimonials Section-->
 
-    <section class="testimonials container">
+    <section class="testimonials container" id="testimonials">
         <div class="subheader-container">
           <h1 class="text-blue-gradient">TESTIMONIALS</h>
           <h3>SEE WHAT OTHERS HAVE TO SAY</h3>
@@ -617,7 +617,7 @@
       </script>
       <script>
         const burger = document.getElementById("burger");
-        const navLinks = document.querySelector(".navbar ul");
+        const navLinks = document.querySelector(".navLinks");
       
         burger.addEventListener("click", () => {
           navLinks.classList.toggle("show");
