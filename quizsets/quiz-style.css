@@ -59,7 +59,7 @@ body {
     gap: 16px;
 }
 
-.score-section, .reset-section{
+.score-section, .reset-section, .pause-section, .mute-section{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -78,11 +78,18 @@ body {
     cursor: pointer;
 }
 
-.star-img, .reset-img{
+.mute-section:hover{
+    transform: scale(1.1);
+    transform-origin: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.star-img, .reset-img, .pause-img, .mute-img{
     height: 32px;
 }
 
-.score-text, .reset-text{
+.score-text, .reset-text, .pause-text, .mute-text{
     font-family: "Rubik";
     font-weight: 900;
     font-size: 18px;
@@ -498,11 +505,11 @@ body {
     cursor: pointer;
 }
 
-.reset-img, .exit-img{
+.reset-img, .exit-img, .pause-img, .mute-img{
     height: 32px;
 }
 
-.score-text, .reset-text{
+.score-text, .reset-text, .pause-text, .mute-text{
     font-family: "Rubik";
     font-weight: 900;
     font-size: 18px;

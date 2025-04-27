@@ -13,71 +13,72 @@ let bgmAudio = null;
 
 const quizData = [
     {
-        question: "Who is the girl featured in the \"Okay na toh.\" meme?",
+        question: "Nagdodroga ka ba kuya?",
         options: {
-            a: "Dani Barretto",
-            b: "Jessica Villarubin",
-            c: "Angelica Panganiban",
-            d: "Grace Tanfelix"
+            a: "Oo naman",
+            b: "Pano mo nasabi?",
+            c: "Ano tingin mo?",
+            d: "Paminsan minsan lang"
         },
-        correctAnswer: "d",
-        correctFeedback: "Tumpak!",
+        correctAnswer: "b",
+        correctFeedback: "A+ for attitude!",
         incorrectFeedback: "Ayusin mo pagpili teh!",
-        trivia: "Grace Tanfelix became viral for her chill cooking energy and the now-iconic line \"Okay na toh.\" in her Facebook reels."
+        trivia: "The line \"Pano mo nasabi?\" became iconic when a guy, looking \"high\" and getting arrested, used it to answer an awkward question."
     },
     {
-        question: "What iconic line did Neneng B say in her viral video?",
+        question: "Tulog ka ba?",
         options: {
-            a: "Ma, gutom na ako.",
-            b: "Ma, anong oras na?",
-            c: "Ma, ano ulam?",
-            d: "Ma, may jowa na ako."
+            a: "Halata naman diba?",
+            b: "Oo, saglit lang",
+            c: "Obvious ba?",
+            d: "Hindi"
         },
         correctAnswer: "c",
-        correctFeedback: "Tama! Gutom speaks louder than words!",
-        incorrectFeedback: "Todo na yan? Ulam na lang mali pa!",
-        trivia: "Neneng B caught netizens' attention when she said \"Ma, ano ulam?\"."
+        correctFeedback: "Witty ka rin pala, no?",
+        incorrectFeedback: "Duhhh! Di pa ba OBVIOUS yung sagot?",
+        trivia: "In a news segment, when asked if she was sleeping, the woman’s response \"Obvious ba?\" made it hilarious."
     },
     {
-        question: "Which nickname is often associated with Malupiton?",
+        question: "Listen, Look, __________ and Learn",
         options: {
-            a: "Sir",
-            b: "Boss/Bossing",
-            c: "Love/Mahal",
-            d: "Kuya"
+            a: "Listen",
+            b: "Like",
+            c: "Subscribe",
+            d: "Love"
         },
-        correctAnswer: "b",
-        correctFeedback: "Slayable ka sis! Alpha energy 'yan!",
-        incorrectFeedback: "Ano? Kaya pa ba?",
-        trivia: "Malupiton is known for his sassy \"bossing\" energy and impersonations."
+        correctAnswer: "a",
+        correctFeedback: "Sobrang latina!",
+        incorrectFeedback: "Listen listen din kasi mag may time… Hmp!",
+        trivia: "In an interview, the person was told to speak English but accidentally said \"Listen\" twice, making it funny and viral."
     },
     {
-        question: "In a statement made by …, Tama? Tayo ay nasa __________.",
+        question: "He ordered bulalo… what did they serve him?",
         options: {
-            a: "Fast food chain",
-            b: "Fine dining restaurant",
-            c: "Five star hotel",
-            d: "Karindirya"
+            a: "Bulalo-flavored cup noodles",
+            b: "Instant bulalo in a sachet",
+            c: "Bulalo-flavored chips",
+            d: "Bulalo soup"
         },
-        correctAnswer: "b",
-        correctFeedback: "Sobrang sosyalin ang peg!",
-        incorrectFeedback: "Nye, anyare? Di bagay!",
-        trivia: "This meme was from Toni Fowler's reality show."
+        correctAnswer: "a",
+        correctFeedback: "Tumama ka dito?! Isa kang OG Memer!",
+        incorrectFeedback: "(wrong answer)? Labo mo dai!",
+        trivia: "This viral meme is about ordering bulalo and being served a humorous twist—bulalo-flavored cup noodles."
     },
     {
-        question: "What is the name of Toni Fowler's daughter?",
+        question: "Under what alias does Malupiton perform his impersonation of BINI Mikha Lim?",
         options: {
-            a: "Trisha",
-            b: "Tyronia",
-            c: "Tanya",
-            d: "Trixie"
+            a: "BINI MikhaMazing",
+            b: "BINI MikhaBoss",
+            c: "BINI Mikhamot",
+            d: "BINI MikhaFun"
         },
-        correctAnswer: "b",
-        correctFeedback: "Aura pa lang, panalo na! Next gen content creator unlocked!",
-        incorrectFeedback: "Hala siya?? Sumbong kita diyan kay Mami Oni",
-        trivia: "Toni Fowler's 13 year old daughter, Tyronia, is often featured in her viral vlogs and content."
+        correctAnswer: "c",
+        correctFeedback: "Pati si BINI Mikha kikiligin sayo! Ang galing galing mo!",
+        incorrectFeedback: "Nakakahiya kay Malupiton at Mikha Lim yung sagot mo!",
+        trivia: "Malupiton’s \"BINI Mikhamot\" impersonation went viral because of his effort with costume and makeup, making it hilarious."
     }
-  ];
+];
+
 
 const audioSystem = {
     bgm: new Audio("../../audio/bgm.mp3"),
