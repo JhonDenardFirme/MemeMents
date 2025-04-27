@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100vh;
   padding: 64px;
 }
 
@@ -103,8 +103,7 @@ p {
 }
 
 /*FOR SCROLL*/
-.full-cont,
-.about {
+.full-cont, .about {
   height: 100vh;
   scroll-snap-align: start;
   position: relative;
@@ -119,21 +118,6 @@ p {
   justify-content: center;
 }
 
-.navbar {
-  z-index: 1000;
-}
-@media (max-width: 768px) {
-  html,
-  body {
-    scroll-snap-type: none;
-  }
-
-  .full-cont,
-  .about {
-    height: auto;
-    min-height: 100vh;
-  }
-}
 /* HOMEPAGE */
 .navbar {
   position: fixed;
@@ -149,6 +133,7 @@ p {
   margin: 0;
   border-radius: 10px;
   margin-top: 20px;
+  z-index: 1000;
 }
 .burger {
   display: none;
@@ -160,7 +145,9 @@ p {
   top: 10px;
   z-index: 999;
 }
-
+.navLinks{
+  display: none;
+}
 .burger .line {
   width: 25px;
   height: 3px;
@@ -319,6 +306,7 @@ ul li {
   color: #2767ee;
 }
 .about {
+  height: 100vh;
   position: relative;
   align-items: center;
   margin-bottom: 0;
@@ -414,77 +402,23 @@ ul li {
     transform: translateY(50%);
   }
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .image-scroller {
-    grid-template-columns: 1fr;
-  }
-
-  .scroller-column {
-    height: 300px;
-    align-items: flex-start;
-  }
-
-  .scroller-track {
-    flex-direction: row;
-    position: relative;
-    top: auto;
-    transform: none;
-  }
-
-  .scroller-track img {
-    width: auto;
-    height: 120px;
-    margin: 0 10px;
-  }
-
-  .column-down .scroller-track {
-    animation-name: scrollRight;
-  }
-
-  .column-up .scroller-track {
-    animation-name: scrollLeft;
-  }
-
-  @keyframes scrollRight {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes scrollLeft {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-}
-
 .about-container {
   display: flex;
+  flex-direction: row;
   margin-top: 30px;
-  gap: 3rem;
-  padding: 20px;
-  margin: 0;
+  gap: 2rem;
+  padding: 30px;
+  margin: 30px;
 }
 
-.about-container {
-  margin-top: 0.2rem;
-}
 .about-container h3 {
-  font-size: 50px;
+  font-size: 20px;
 }
 .about-container p {
   font-size: 20px;
   text-align: justify;
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 20px;
 }
 
@@ -589,13 +523,13 @@ ul li {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .statistics-section {
-    gap: 20px;
+    gap: 10px;
   }
   .stat-item:not(:last-child)::after {
-    display: none; /* Hide dividers on mobile */
+    display: none; 
   }
   .statistics-section h3 {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 }
 .header2 {
@@ -603,7 +537,6 @@ ul li {
 }
 
 /*------ MEDIA QUERY FOR 400px ----- */
-
 @media (min-width: 380px) {
   h1,
   h1 span {
@@ -885,22 +818,6 @@ ul li {
   .cta-button:hover {
     transform: scale(1.15); /* pops the whole button + text */
     box-shadow: 8px 12px 10px rgba(0, 77, 51, 0.4);
-  }
-
-  /* Responsive CTA */
-  @media (max-width: 768px) {
-    .cta-container {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .cta-content {
-      text-align: center;
-    }
-
-    .cta-image img {
-      max-width: 240px;
-    }
   }
 
   .footer {
@@ -1222,21 +1139,6 @@ ul li {
       order: 0;
       margin-right: 1rem; 
     }
-
-    /* Navigation (if applicable) */
-    .main-nav {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .main-nav ul {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .main-nav a {
-      font-size: 0.9rem;
-      padding: 0.4rem;
-    }
-
     /* Subheader */
     .subheader-container {
       margin-bottom: 30px;
@@ -1377,58 +1279,68 @@ ul li {
 
 /*------BEDJ MEDIA QUERIES-------*/
 @media screen and (max-width: 768px) {
+  html,
+  body {
+    scroll-snap-type: none;
+  }
 
+  .full-cont,
+  .about {
+    height: auto;
+    min-height: 100vh;
+  }
   h1, h1 span{
-    font-size: 128px;
+    font-size: 70px;
     font-family: 'Rubik', 'Arial', sans-serif;
     font-weight: 900;
-}
+    }
 
-h2, h2 span{
-    font-size: 64px;
-    font-family: 'Rubik', 'Arial', sans-serif;
-    font-weight: 900;
-    margin-bottom: -8px;
-}
+  h2, h2 span{
+      font-size: 64px;
+      font-family: 'Rubik', 'Arial', sans-serif;
+      font-weight: 900;
+      margin-bottom: -8px;
+      }
 
-h3{
-    font-size: 28px;
-    font-family: 'Gilroy-Bold', 'Arial', sans-serif;
-    color: var(--black);
-    font-weight: 400;
-}
+  h3{
+      font-size: 28px;
+      font-family: 'Gilroy-Bold', 'Arial', sans-serif;
+      color: var(--black);
+      font-weight: 400;
+  }
 
-h4, h4 span {
-    font-size: 22px;
-    font-family: 'Rubik', 'Arial', sans-serif;
-    color: white;
-    font-weight: 900;
-    margin-bottom: -8px;
-}
+  h4, h4 span {
+      font-size: 22px;
+      font-family: 'Rubik', 'Arial', sans-serif;
+      color: white;
+      font-weight: 900;
+      margin-bottom: -8px;
+  }
 
-p{
-    font-size: 14px;
-    font-family: 'Gilroy-Regular', sans-serif;
-    color: var(--black);
-    font-weight: 300;
-}
+  p{
+      font-size: 14px;
+      font-family: 'Gilroy-Regular', sans-serif;
+      color: var(--black);
+      font-weight: 300;
+  }
 
-.container {
-    padding: 32px;
-}
+  .container {
+      padding: 32px;
+  }
 
-/*Navigation*/
-
-
-/* Hide nav items on small screens */
-@media (max-width: 768px) {
+  /*Navigation*/
   .navbar {
-    margin: 0;
-    width: 100%;
+    position: fixed;
+    display: flex;
+    width: 100vw;
     height: 50px;
+    align-items: center;
+    justify-content: center;
+    color: black;
     flex-direction: column;
-    align-items: flex-start;
-    border-radius: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
   }
 
   .burger {
@@ -1436,7 +1348,7 @@ p{
   }
 
   .navLinks{
-    margin-top: 20px;
+    margin-top: 280px;
   }
   .navbar ul {
     display: none;
@@ -1460,6 +1372,130 @@ p{
     padding: 10px;
     color: white;
   }
+
+  /*About*/
+  .header {
+    height: auto;
+  }
+  
+  .header h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+  }
+  
+  .header h3 {
+    font-size: 30px;
+  }
+  
+  .image-scroller {
+    display: none;
+  }
+  .about-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 10px;
+  }
+  
+  .about1, 
+  .about2 {
+    padding: 10px;
+  }
+  
+  .about-container h3 {
+    font-size: 20px;
+  }
+  
+  .about-container p {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  
+  .header2 h3 {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+  
+  .statistics-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+  }
+  
+  .stat-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+  
+  .stat-item p {
+    font-size: 1rem;
+  }
+  
+  .image-scroller {
+    grid-template-columns: 1fr;
+  }
+
+  .scroller-column {
+    height: 300px;
+    align-items: flex-start;
+  }
+
+  .scroller-track {
+    flex-direction: row;
+    position: relative;
+    top: auto;
+    transform: none;
+  }
+
+  .scroller-track img {
+    width: auto;
+    height: 120px;
+    margin: 0 10px;
+  }
+
+  .column-down .scroller-track {
+    animation-name: scrollRight;
+  }
+
+  .column-up .scroller-track {
+    animation-name: scrollLeft;
+  }
+
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /*Responsive CTA*/
+  .cta-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-content {
+    text-align: center;
+  }
+
+  .cta-image img {
+    max-width: 240px;
+  }
 }
 
-}
