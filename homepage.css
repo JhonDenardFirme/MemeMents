@@ -103,7 +103,7 @@ p {
 }
 
 /*FOR SCROLL*/
-.full-cont, .about {
+.full-cont, .about, .testimonials, .quiz-sets {
   height: 100vh;
   scroll-snap-align: start;
   position: relative;
@@ -196,7 +196,7 @@ ul li {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
   opacity: 0; /* Start invisible */
   animation: fadeIn 1.5s ease-in-out forwards;
   animation-delay: 0.3s; /* Starts after 0.3s */
