@@ -300,7 +300,6 @@
 
 
 
-
 @media (max-width: 800px) {
     .sets-container{
         display: grid;
@@ -311,6 +310,35 @@
         width: 100%;
         padding: 64px;
     }
+
+    .model-easy{
+        position: absolute;
+        right: -8%;
+        bottom: 0;
+        width: 350px;
+    }
+    
+    .model-medium{
+        position: absolute;
+        right: 0%;
+        bottom: 0;
+        width: 250px;
+    }
+    
+    .model-hard{
+        position: absolute;
+        right: -8%;
+        bottom: -3%;
+        width: 350px;
+    }
+    
+    .model-extreme{
+        position: absolute;
+        right: -8%;
+        bottom: 0;
+        width: 350px;
+    }
+    
 }
 
 
@@ -323,6 +351,146 @@
         gap: 42px;
     
         width: 100%;
-        padding: 64px;
+        padding: 32px;
     }
+
+    .tagline-quiz-set{
+        text-align: center;
+        font-size: 24px;
+        margin-top: 16px;
+    }
+
+    .set-card{
+        overflow: hidden;
+    }
+
+    .model-easy{
+        position: absolute;
+        right: -12%;
+        bottom: 0;
+        width: 220px;
+    }
+    
+    .model-medium{
+        position: absolute;
+        right: 0%;
+        bottom: 0;
+        width: 140px;
+    }
+    
+    .model-hard{
+        position: absolute;
+        right: -8%;
+        bottom: -3%;
+        width: 220px;
+    }
+    
+    .model-extreme{
+        position: absolute;
+        right: -8%;
+        bottom: 0;
+        width: 220px;
+    }
+
+
+
+    .okay{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 72px;
+        color: white;
+    }
+    
+    .nato{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 42px;
+        color: white;
+        margin-top: -16px;
+        margin-left: 72px;
+    }
+    
+    
+    .jusko{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 72px;
+        color: white;
+    }
+    
+    .juskopoh{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 42px;
+        color: white;
+        margin-top: -16px;
+        margin-left: 46px;
+    }
+    
+    
+    
+    .mgakapuso{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: white;
+        margin-right: auto;
+    }
+    
+    .uuwi{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 64px;
+        color: white;
+        margin-top: -16px;
+        margin-left: 32px;
+    }
+    
+    .napoako{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: white;
+        margin-top: -18px;
+        margin-left: 64px;
+    }
+    
+    
+    .bossing{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: white;
+        margin-right: auto;
+    }
+    
+    .kupal{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 64px;
+        color: white;
+        margin-top: -16px;
+        margin-left: 32px;
+    }
+    
+    .kaba{
+        font-family: "Rubik", Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: white;
+        margin-top: -18px;
+        margin-left: 128px;
+    }
+    
+    .set-tagline{
+        margin-bottom: 32px;
+        
+    }
+
+    .sub-tagline{
+        font-size: 12px;
+    }
+
+
+
 }
