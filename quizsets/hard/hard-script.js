@@ -22,7 +22,7 @@ const quizData = [
         },
         correctAnswer: "a",
         correctFeedback: "Perfect ka no?",
-        incorrectFeedback: "Todo na yan? Sino si (wrong answer)?",
+        incorrectFeedback: "Todo na yan? Sino yan?",
         trivia: "Mike Enriquez said \"Ang Sarap mo, Pia\" at the end of their news report, and it quickly went viral."
     },
     {
@@ -35,7 +35,7 @@ const quizData = [
         },
         correctAnswer: "d",
         correctFeedback: "Tumpak! Best paired with chismis!",
-        incorrectFeedback: "Ayusin mo pagpili teh! (wrong answer)? Ibang vendor yata nasa isip mo!",
+        incorrectFeedback: "Ayusin mo pagpili teh! Ibang vendor yata nasa isip mo!",
         trivia: "Diwata’s viral food business involves selling pares."
     },
     {
@@ -61,7 +61,7 @@ const quizData = [
         },
         correctAnswer: "a",
         correctFeedback: "100% slayable ka diyan sis!",
-        incorrectFeedback: "(wrong answer)? Malayong malayo, sis! Baka mabuzzer ka ni Kuya Big Brother!",
+        incorrectFeedback: "Malayong malayo, sis! Baka mabuzzer ka ni Kuya Big Brother!",
         trivia: "Ashley and AC were the first duo to get evicted, making their exit a memorable moment."
     },
     {

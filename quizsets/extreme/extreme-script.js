@@ -61,7 +61,7 @@ const quizData = [
         },
         correctAnswer: "a",
         correctFeedback: "Tumama ka dito?! Isa kang OG Memer!",
-        incorrectFeedback: "(wrong answer)? Labo mo dai!",
+        incorrectFeedback: "Labo mo dai!",
         trivia: "This viral meme is about ordering bulalo and being served a humorous twist—bulalo-flavored cup noodles."
     },
     {
