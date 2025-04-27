@@ -244,7 +244,7 @@ You can copy this in your own css if you want other angles (90deg or horizontal 
     }
 
     .container {
-        padding: 16px;
+        padding: 0;
     }
     
 }

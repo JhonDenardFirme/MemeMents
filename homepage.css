@@ -521,7 +521,7 @@ ul li {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .statistics-section {
     gap: 10px;
   }
@@ -1278,7 +1278,7 @@ ul li {
 }
 
 /*------BEDJ MEDIA QUERIES-------*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   html,
   body {
     scroll-snap-type: none;
@@ -1333,7 +1333,7 @@ ul li {
     position: relative;
     display: flex;
     width: 100%;
-    height: 50px;
+    height: 40px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -1341,39 +1341,40 @@ ul li {
     margin: 0;
 
   }
- .parent{
-  background: linear-gradient(to right, #12358a, #050e24);
- }
-  .burger {
-    display: flex;
+  .parent{
+    background: linear-gradient(to right, #12358a, #050e24);
+    height: 40px;
   }
+    .burger {
+      display: flex;
+    }
 
-  .navLinks{
-    margin-top: 280px;
-  }
-  .navbar ul {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+    .navLinks{
+      margin-top: 280px;
+    }
+    .navbar ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
 
-  .navbar ul.show {
-    display: flex;
-  }
+    .navbar ul.show {
+      display: flex;
+    }
 
-  .navbar ul a {
-    text-align: left;
-    width: 100%;
-  }
+    .navbar ul a {
+      text-align: left;
+      width: 100%;
+    }
 
-  .navbar ul li {
-    padding: 10px;
-    color: white;
-  }
-  /*HOMEPAGE*/
+    .navbar ul li {
+      padding: 10px;
+      color: white;
+    }
+    /*HOMEPAGE*/
   .context {
     display: flex;
     flex-direction: column;
@@ -1381,15 +1382,14 @@ ul li {
     flex-wrap: wrap;
     text-align: center;
     max-width: 400px;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
   .context h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-    font-size: 2rem !important;
+    font-size: 2.1rem !important;
     font-family: "Gilroy-Bold";
     color: rgba(39, 103, 238, 0.2);
     background: linear-gradient(to right, #12358a 0%, #2767ee 50%, #12358a 100%);
@@ -1402,7 +1402,11 @@ ul li {
     text-align: center;
   }
   .context p {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
     max-width: 400px;
+    font-size: 1.3rem;
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
     animation-delay: 0.8s;
@@ -1417,6 +1421,63 @@ ul li {
     100% {
       background-position: 200% center;
     }
+  }
+  .home{
+    margin-top: 40px;
+  }
+  .home-context {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 50px ;
+    margin: 0 auto ;
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 0.3s; /* Starts after 0.3s */
+  }
+
+  .button-class {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    opacity: 0;
+    gap: 20px;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.9s;
+  }
+
+  .button1 {
+    width: 250px;
+    height: 60px;
+    border-radius: 10px;
+    border-style: none;
+    background: linear-gradient(to right, #2767ee, #12358a);
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(4, 10, 22, 0.4);
+  }
+  .button1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(39, 103, 238, 0.4);
+  }
+  .button2 {
+    background: none;
+    width: 250px;
+    height: 60px;
+    margin-left: -20px;
+    border-radius: 10px;
+    border: 1px solid #12358a;
+    font-size: 1rem;
+    color: #12358a;
+    box-shadow: 0 5px 15px rgba(4, 10, 22, 0.4);
+  }
+  .button2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(39, 103, 238, 0.4);
   }
   /*About*/
   .header {
