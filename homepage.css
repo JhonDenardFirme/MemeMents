@@ -844,7 +844,7 @@ ul li {
     left: 0;
     width: 100%;
     height: 300px;
-    background: url("Images/Testimonials/footer_bg.png") no-repeat center bottom;
+    background: url("./images/Testimonials/footer_bg.png") no-repeat center bottom;
     background-size: cover;
     z-index: -1;
     flex-shrink: 0;
