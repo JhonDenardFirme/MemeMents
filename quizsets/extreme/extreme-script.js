@@ -220,6 +220,13 @@ const elements = {
         trivia: document.querySelector("#checking-trivia"),
         nextButton: document.querySelector("#next-button")
     },
+    resetConfirmModal: {
+        container: document.createElement("div"),
+        message: document.createElement("div"),
+        buttonContainer: document.createElement("div"),
+        confirmButton: document.createElement("button"),
+        cancelButton: document.createElement("button")
+    },
     evaluation: {
         container: document.querySelector('#evaluation-container'),
         resetButton: document.querySelector('#evaluation-container .reset-img'),
@@ -253,6 +260,7 @@ function initializeGame() {
     audioSystem.init();
     
     createPauseModal();
+    createResetConfirmationModal(); 
     updateContent(currentIndex);
     animateElements();
     setupEventListeners();
@@ -291,21 +299,17 @@ function setupEventListeners() {
     });
     
     elements.quiz.resetButton.addEventListener('click', () => {
-        audioSystem.playClick();
-        resetQuiz();
+        askResetConfirmation(); // Change this line
     });
     elements.quiz.resetSection.addEventListener('click', () => {
-        audioSystem.playClick();
-        resetQuiz();
+        askResetConfirmation(); // Change this line
     });
     
     elements.evaluation.resetButton.addEventListener('click', () => {
-        audioSystem.playClick();
-        resetQuiz();
+        askResetConfirmation(); // Change this line
     });
     elements.evaluation.resetSection.addEventListener('click', () => {
-        audioSystem.playClick();
-        resetQuiz();
+        askResetConfirmation(); // Change this line
     });
     
     if (elements.quiz.pauseButton) {
@@ -503,7 +507,7 @@ function updateContent(index) {
     elements.options.textB.textContent = quizData[index].options.b;
     elements.options.textC.textContent = quizData[index].options.c;
     elements.options.textD.textContent = quizData[index].options.d;
-    elements.quiz.memeImage.src = `../../images/quiz-assets/gifs/X${(index + 1).toString()}.gif`;
+    elements.quiz.memeImage.src = `../../images/quiz-assets/gifs/E${(index + 1).toString()}.gif`;
 
     setTimeout(() => {
         audioSystem.playQuestionVoice(index);
@@ -706,7 +710,80 @@ function getRatingConfig(score) {
     return configs[score] || configs[0];
 }
 
-function resetQuiz() {
+
+function createResetConfirmationModal() {
+    elements.resetConfirmModal.container.className = "reset-confirm-modal";
+    elements.resetConfirmModal.container.style.position = "fixed";
+    elements.resetConfirmModal.container.style.top = "0";
+    elements.resetConfirmModal.container.style.left = "0";
+    elements.resetConfirmModal.container.style.width = "100%";
+    elements.resetConfirmModal.container.style.height = "100%";
+    elements.resetConfirmModal.container.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    elements.resetConfirmModal.container.style.display = "none";
+    elements.resetConfirmModal.container.style.justifyContent = "center";
+    elements.resetConfirmModal.container.style.alignItems = "center";
+    elements.resetConfirmModal.container.style.zIndex = "1000";
+    elements.resetConfirmModal.container.style.flexDirection = "column";
+    
+    elements.resetConfirmModal.message.textContent = "Are you sure you want to reset the current quiz?";
+    elements.resetConfirmModal.message.style.color = "white";
+    elements.resetConfirmModal.message.style.fontSize = "24px";
+    elements.resetConfirmModal.message.style.fontWeight = "bold";
+    elements.resetConfirmModal.message.style.marginBottom = "20px";
+    elements.resetConfirmModal.message.style.textAlign = "center";
+    
+    elements.resetConfirmModal.buttonContainer.style.display = "flex";
+    elements.resetConfirmModal.buttonContainer.style.gap = "20px";
+    
+    elements.resetConfirmModal.confirmButton.textContent = "Confirm";
+    elements.resetConfirmModal.confirmButton.className = "confirm-button blue-gradient";
+    elements.resetConfirmModal.confirmButton.style.padding = "12px 20px";
+    elements.resetConfirmModal.confirmButton.style.borderRadius = "8px";
+    elements.resetConfirmModal.confirmButton.style.fontSize = "16px";
+    elements.resetConfirmModal.confirmButton.style.fontWeight = "bold";
+    elements.resetConfirmModal.confirmButton.style.cursor = "pointer";
+    elements.resetConfirmModal.confirmButton.style.border = "none";
+    elements.resetConfirmModal.confirmButton.style.color = "white";
+    elements.resetConfirmModal.confirmButton.style.backgroundColor = "#e74c3c";
+    
+    elements.resetConfirmModal.cancelButton.textContent = "Cancel";
+    elements.resetConfirmModal.cancelButton.className = "cancel-button";
+    elements.resetConfirmModal.cancelButton.style.padding = "12px 20px";
+    elements.resetConfirmModal.cancelButton.style.borderRadius = "8px";
+    elements.resetConfirmModal.cancelButton.style.fontSize = "16px";
+    elements.resetConfirmModal.cancelButton.style.fontWeight = "bold";
+    elements.resetConfirmModal.cancelButton.style.cursor = "pointer";
+    elements.resetConfirmModal.cancelButton.style.border = "none";
+    elements.resetConfirmModal.cancelButton.style.color = "white";
+    elements.resetConfirmModal.cancelButton.style.backgroundColor = "#3498db";
+    
+    elements.resetConfirmModal.buttonContainer.appendChild(elements.resetConfirmModal.confirmButton);
+    elements.resetConfirmModal.buttonContainer.appendChild(elements.resetConfirmModal.cancelButton);
+    
+    elements.resetConfirmModal.container.appendChild(elements.resetConfirmModal.message);
+    elements.resetConfirmModal.container.appendChild(elements.resetConfirmModal.buttonContainer);
+    
+    document.body.appendChild(elements.resetConfirmModal.container);
+
+    elements.resetConfirmModal.confirmButton.addEventListener('click', () => {
+        audioSystem.playClick();
+        elements.resetConfirmModal.container.style.display = "none";
+        executeResetQuiz();
+    });
+    
+    elements.resetConfirmModal.cancelButton.addEventListener('click', () => {
+        audioSystem.playClick();
+        elements.resetConfirmModal.container.style.display = "none";
+    });
+}
+
+
+function askResetConfirmation() {
+    elements.resetConfirmModal.container.style.display = "flex";
+    audioSystem.playClick();
+}
+
+function executeResetQuiz() {
     if (timerInterval) {
         clearInterval(timerInterval);
     }
